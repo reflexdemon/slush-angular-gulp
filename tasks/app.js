@@ -89,7 +89,7 @@
                         }))
                         .pipe(conflict('./'))
                         .pipe(gulp.dest('./'))
-                        // .pipe(install())
+                        .pipe(install())
                         .on('finish', function() {
                             done();
                         });
