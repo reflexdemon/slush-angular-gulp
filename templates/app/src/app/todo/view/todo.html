@@ -1,0 +1,13 @@
+<h3><i class="fa fa-bars"></i> Todo</h3>
+<ul class="todo-list">
+  <li class="todo-item" ng-repeat="todo in todos" ng-class="{'todo-done': todo.isDone}">
+    <label><input type="checkbox" ng-click="check(this)" ng-model="todo.isDone"/>&nbsp;{{todo.label}}</label>
+  </li>
+  <li class="todo-item">
+    <form ng-submit="add()">
+      <input type="text" placeholder="New item..." ng-model="label"/>
+      <button type="submit" ng-disabled="posting || !label" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add</button>
+    </form>
+  </li>
+</ul>
+<button type="button" ng-click="removeChecked()" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Remove Completed</button>

@@ -1,0 +1,61 @@
+/**
+ * constant Task
+ * This is the main task that is invoked for the processing of the slushfile.js
+ */
+
+(function() {
+var gulp = require('gulp'),
+    install = require('gulp-install'),
+    conflict = require('gulp-conflict'),
+    template = require('gulp-template'),
+    rename = require('gulp-rename'),
+    inquirer = require('inquirer')
+    _ = require('underscore.string');
+
+//Local dependencies
+var util = require('../util');
+
+module.exports = function(gulp) {
+    'use strict';
+
+    gulp.task('constant', function(done) {
+        var _this = this;
+        var name = util.getDefaultOption(_this.args, 0);
+        var options  = util.getGlobalOptions();
+        var modules = util.getModuleProposal(options.appDir);
+
+        if (modules.length === 0) {
+          throw new Error('constant must be created in a module, but no modules exist. Create a module using "slush angular-gulp:module <module-Name>".');
+        }
+
+        inquirer.prompt([{
+            type: 'input',
+            name: 'fileName',
+            message: 'What is the name of your constant?',
+            default: name
+        }, {
+            type: 'list',
+            name: 'module',
+            message: 'What is your AngularJS module name?',
+            choices: modules
+        }], function(answers) {
+            //Init
+            answers.nameDashed = _.slugify(util.getNameProposal());
+            answers.scriptAppName =  _.camelize(answers.nameDashed) + '.' +answers.module ;
+            answers.classedName = _.camelize(answers.fileName);
+            answers.classedNameDashed = _.slugify(answers.fileName);
+            answers.classedModule = _.capitalize(_.camelize(answers.module));;
+
+            //Source
+            gulp.src(__dirname + '/../templates/constant/constant.js')
+                .pipe(template(answers))
+                .pipe(rename(answers.fileName + '-constant.js'))
+                .pipe(conflict(options.base + options.appDir + '/' + answers.module))
+                .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
+                .on('finish', function() {
+                    done();
+                });
+        });
+    });
+}
+})();
