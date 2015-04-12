@@ -78,7 +78,7 @@
                       answers.example.settings[item] = item;
                     });
                     answers.styleData = util.cssTypeData[answers.csstype];
-                    return gulp.src(files)
+                    gulp.src(files)
                         .pipe(template(answers))
                         .pipe(rename(function(file) {
                             if (file.extname === '.css') {
