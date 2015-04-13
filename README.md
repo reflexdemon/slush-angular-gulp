@@ -1,4 +1,4 @@
-slush-angular-gulp
+slush-angular-gulp [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-angular-gulp.png)](http://badges.enytc.com/for/npm/slush-angular-gulp)
 ==============
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
