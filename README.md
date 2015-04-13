@@ -3,6 +3,10 @@ slush-angular-gulp
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
 
+
+
+[gh-pages](http://reflexdemon.github.io/slush-angular-gulp)
+
 # Introduction
 
 All, would like to tell you this generator is build with inspiration from the below projects.
