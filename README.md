@@ -276,7 +276,8 @@ slush angular-gulp:directive awesome-thing
 ? Replace awesome-thing-directive.js? replace
 [08:08:11] [conflict] Overwriting awesome-thing-directive.js
 [08:08:11] Finished 'angular-gulp:directive' after 5.68 s
-[slush] Scaffolding done```
+[slush] Scaffolding done
+```
 
 Produces `src/app/user/awesome-thing-directive.js`:
 ```javascript
@@ -721,7 +722,7 @@ function extendexceptionHandler($delegate) {
 
 ```
 
-### view
+### View
 Generates a view in `src/app/<module>`.
 
 Syntax:
