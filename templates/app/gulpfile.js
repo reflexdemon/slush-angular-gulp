@@ -22,12 +22,17 @@ var gulp = require('gulp'),
 //Configure your proxy for integrating with services
 //
 var configuration = {
+  <%if(middleware){%>
     proxyOptions: _.extend(url.parse('http://demo-venkatvp.rhcloud.com/services'), {
         route: '/services',
         headers: {
-            custom: 'My Custom Header'
+            'custom': 'My Custom Header',
+            'Origin': 'http://yourdomain.com',
+            'Access-Control-Request-Method': 'GET',
+            'Access-Control-Request-Headers': 'X-Custom-Header'
         }
     }),
+    <%}%>
     htmlminOpts: {
         removeComments: true,
         collapseWhitespace: true,
@@ -52,17 +57,6 @@ var configuration = {
         './bower_components/fontawesome/**/*.woff2'
     ]
 };
-<%if(middleware){%>
-  //Configure your proxy for integrating with services
-  var proxyOptions = _.extend(url.parse('http://demo-venkatvp.rhcloud.com/services'), {
-    route: '/services',
-      headers: {
-        'Origin': 'http://yourdomain.com',
-        'Access-Control-Request-Method': 'GET',
-        'Access-Control-Request-Headers': 'X-Custom-Header'
-      }
-  });
-<%}%>
 
 /**
  * JS Hint
@@ -181,7 +175,7 @@ gulp.task('dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist', 'bower-as
         .pipe(gulp.dest('./dist/'));
 });
 
-<%if(!middleware){%>
+<%if(middleware){%>
 /**
  * Static file server
  */
@@ -340,7 +334,7 @@ function appFiles () {
  */
 function templateFiles (opt) {
   return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
-    .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop());
+    .pipe(opt && opt.min ? g.htmlmin(configuration.htmlminOpts) : noop());
 }
 
 /**
