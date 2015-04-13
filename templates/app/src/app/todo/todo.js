@@ -1,7 +1,6 @@
 (function () {
         'use strict';
-
-  angular
-        .module('<%= modulename %>.todo', []);
+  //Module declaration
+  angular.module('<%= modulename %>.todo', []);
 
 })();

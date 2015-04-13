@@ -1,9 +1,10 @@
 (function() {
     'use strict';
-
+    //This is the basic entry point of the applicaion
     angular.module('<%= modulename %>', [
-        'ngRoute',
-        <% if (answers.example.settings.todo) %>'<%= modulename %>.todo', <% } %>
-        <% if (answers.example.settings.heat) %>'<%= modulename %>.heat' <% } %>
+        'ngRoute', 'ngResource'<% if (exampleSettings['todo'] == 'todo') { %>,
+        '<%= modulename %>.todo'<% } %><% if (exampleSettings['heat'] == 'heat') { %>,
+        '<%= modulename %>.heat'<% } %>
     ]);
+
 })();

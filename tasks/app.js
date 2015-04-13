@@ -17,7 +17,7 @@
     module.exports = function(gulp) {
         'use strict';
         _.extend(_, require('underscore.string'));
-        var examples = [ "todo", "heat"];
+        var examples = ["todo", "heat"];
 
         gulp.task('app', function(done) {
             var _this = this;
@@ -52,16 +52,16 @@
                     name: 'example',
                     message: 'Please select the examples that needs to be included:',
                     choices: [{
-                        name: 'A Simple TODO application to demo the AngularJS',
-                        value: 'todo',
-                        checked : true
-                    },
-                    new inquirer.Separator("These require server side REST calls and it is highly recommended to use the middleware support:"),
-                    {
-                        name: 'A Simple example to show how to make server call for non persistance service calls (heat)',
-                        value: 'heat',
-                        checked : true
-                    }]
+                            name: 'A Simple TODO application to demo the AngularJS',
+                            value: 'todo',
+                            checked: true
+                        },
+                        new inquirer.Separator("These require server side REST calls and it is highly recommended to use the middleware support:"), {
+                            name: 'A Simple example to show how to make server call for non persistance service calls (heat)',
+                            value: 'heat',
+                            checked: true
+                        }
+                    ]
                 }],
                 function(answers) {
                     //Hande for user response
@@ -69,16 +69,30 @@
                     answers.modulename = _.camelize(answers.nameDashed);
                     var files = [__dirname + '/../templates/app/**'];
                     var exclude = _.xor(examples, answers.example);
-                    _.each(exclude, function (choice) {
-                      files.push('!' + __dirname + '/../templates/app/src/app/'+choice+'/**');
-                      files.push('!' + __dirname + '/../templates/app/src/app/'+choice);
+                    _.each(exclude, function(choice) {
+                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice + '/**');
+                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice);
                     })
-                    answers.example.settings = {};
-                    _.each(answers.example, function (item) {
-                      answers.example.settings[item] = item;
+                    /*
+                    { name: 'my-angular-app',
+                      csstype: 'less',
+                      middleware: true,
+                      example: [ 'todo', 'heat', settings: { todo: 'todo', heat: 'heat' } ],
+                      nameDashed: 'my-angular-app',
+                      modulename: 'myAngularApp',
+                      styleData:
+                       { plugin: 'gulp-less',
+                         pluginVersion: '^1.2.3',
+                         pipeCommand: 'g.less()',
+                         extension: 'less' } }
+                     */
+                    answers.exampleSettings = {};
+                    _.each(answers.example, function(item) {
+                        answers.exampleSettings[item] = item;
                     });
                     answers.styleData = util.cssTypeData[answers.csstype];
-                    gulp.src(files)
+                    console.log("ANSWERS:", answers);
+                    return gulp.src(files)
                         .pipe(template(answers))
                         .pipe(rename(function(file) {
                             if (file.extname === '.css') {
