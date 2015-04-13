@@ -5,7 +5,7 @@ slush-angular-gulp [![GH version](https://badge-me.herokuapp.com/api/gh/reflexde
 
 
 
-[gh-pages](http://reflexdemon.github.io/slush-angular-gulp)
+[reflexdemon.github.io/slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp)
 
 # Introduction
 
