@@ -12,8 +12,8 @@ slush-angular-gulp [![GH version](https://badge-me.herokuapp.com/api/gh/reflexde
 All, would like to tell you this generator is build with inspiration from the below projects.
 
 1. [slush-angular](https://www.npmjs.com/package/slush-angular)
-2. [angular-styleguide](https://github.com/reflexdemon/angular-styleguide)
-3. [generator-angular](https://github.com/yeoman/generator-angular)
+2. [angular-styleguide](https://github.com/johnpapa/angular-styleguide)
+3. [Yomen generator-angular](https://github.com/yeoman/generator-angular)
 
 Moreover, this is just a first step towards integration of all the goodies of the above mentioned projects and expect more on future releases.
 
