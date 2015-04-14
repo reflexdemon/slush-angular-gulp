@@ -7,7 +7,7 @@
 (function() {
     'use strict';
     var gulp = require('gulp'),
-        testingUtil = require('./util.spec'),
+        testingUtil = require('./testing_util.js'),
         mockGulpDest = require('mock-gulp-dest')(gulp);
 
     var assert = require('assertthat');
