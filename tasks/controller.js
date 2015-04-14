@@ -50,9 +50,9 @@ module.exports = function(gulp) {
             answers.classedName = _.capitalize(_.camelize(answers.fileName));
             // test
             if (answers.test) {
-                gulp.src(__dirname + '/../templates/controller/controller_test.js')
+                gulp.src(__dirname + '/../templates/controller/controller.spec.js')
                     .pipe(template(answers))
-                    .pipe(rename(answers.fileName + '-controller_test.js'))
+                    .pipe(rename(answers.fileName + '-controller.spec.js'))
                     .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                     .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
             }

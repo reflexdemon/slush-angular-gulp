@@ -3,21 +3,21 @@
 
     angular
         .module('<%= scriptAppName %>')
-    .config(<%= classedName %>Config);
+        .config(<%= classedName %>Config);
 
-/* @ngInject */
-function <%= classedName %>Config($provide) {
-    $provide.decorator('$<%= classedName %>Handler', extend<%= classedName %>Handler);
-}
+    /* @ngInject */
+    function <%= classedName %>Config($provide) {
+        $provide.decorator('$<%= classedName %>Handler', extend<%= classedName %>Handler);
+    }
 
-/* @ngInject */
-function extend<%= classedName %>Handler($delegate) {
-    return function(<%= classedName %>, cause) {
-        $delegate(<%= classedName %>, cause);
-        var data = {
-            <%= classedName %>: <%= classedName %>
+    /* @ngInject */
+    function extend<%= classedName %>Handler($delegate) {
+        return function(<%= classedName %>, cause) {
+            $delegate(<%= classedName %>, cause);
+            var data = {
+                <%= classedName %>: <%= classedName %>
+            };
         };
-    };
-}
+    }
 
 })();

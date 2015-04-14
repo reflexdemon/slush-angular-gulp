@@ -1,6 +1,10 @@
 (function() {
     'use strict';
 
+    angular
+        .module('<%= scriptAppName %>')
+        .controller('<%= classedName %>Ctrl', <%= classedName %>Ctrl);
+    //////////////////////
 
     /**
      * @ngdoc function
@@ -17,9 +21,5 @@
             'Karma'
         ];
     }
-
-    angular
-        .module('<%= scriptAppName %>')
-        .controller('<%= classedName %>Ctrl', <%= classedName %>Ctrl);
 
 })();

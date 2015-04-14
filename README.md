@@ -73,7 +73,7 @@ my-angular-app/
         │   └── _base.styl/less/scss        # A stylesheet partial with base styles
         └── todo
             ├── todo-controller.js          # The todo controller
-            ├── todo-controller_test.js     # Karma test for the todo controller
+            ├── todo-controller.spec.js     # Karma test for the todo controller
             ├── todo.html                   # The todo list template
             ├── todo.js                     # The todo module
             └── todo.styl/less/scss         # Todo module specific styles
@@ -145,7 +145,7 @@ slush angular-gulp:controller login
 ? What is the name of your controller? login
 ? What is your AngularJS module name? home
 ? Do you want to include unit testing? Yes
-[06:23:56] [conflict] Creating login-controller_test.js
+[06:23:56] [conflict] Creating login-controller.spec.js
 [06:23:56] [conflict] Creating login-controller.js
 [06:23:56] Finished 'angular-gulp:controller' after 10 s
 [slush] Scaffolding done
@@ -181,7 +181,7 @@ Produces `src/app/home/login-controller.js`:
 
 ```
 and
-Produce `src/app/home/login-controller_test.js`
+Produce `src/app/home/login-controller.spec.js`
 ```javascript
 'use strict';
 /**
@@ -318,7 +318,7 @@ slush angular-gulp:filter checkmark
 ? What is the name of your filter? checkmark
 ? What is your AngularJS module name? home
 ? Do you want to include unit testing? Yes
-[08:35:32] [conflict] Creating checkmark-filter_test.js
+[08:35:32] [conflict] Creating checkmark-filter.spec.js
 [08:35:32] [conflict] Creating checkmark-filter.js
 [08:35:32] Finished 'angular-gulp:filter' after 15 s
 [slush] Scaffolding done
@@ -339,7 +339,7 @@ Produces `src/app/home/checkmark-filter.js`:
 
 and 
 
-Produces `src/app/home/checkmark-filter_test.js`:
+Produces `src/app/home/checkmark-filter.spec.js`:
 ```javascript
 'use strict';
 
