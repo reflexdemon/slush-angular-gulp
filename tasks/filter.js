@@ -52,9 +52,9 @@ module.exports = function(gulp) {
 
             // test
             if (answers.test) {
-                gulp.src(__dirname + '/../templates/filter/filter_test.js')
+                gulp.src(__dirname + '/../templates/filter/filter.spec.js')
                     .pipe(template(answers))
-                    .pipe(rename(answers.fileName + '-filter_test.js'))
+                    .pipe(rename(answers.fileName + '-filter.spec.js'))
                     .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                     .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
             }

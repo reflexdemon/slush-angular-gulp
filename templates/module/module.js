@@ -5,12 +5,12 @@
 (function() {
         'use strict';
 
-        angular.module('<%= scriptAppName %>', [], moduleConfiguration);
+        angular
+            .module('<%= scriptAppName %>', [], moduleConfiguration);
 
         /* @ngInject */
         function moduleConfiguration() {
             //TODO Have any module specific configurator here
-        });
-}
+        }
 
 })();

@@ -7,7 +7,7 @@
 (function() {
     'use strict';
     var gulp = require('gulp'),
-        testingUtil = require('./testing_util'),
+        testingUtil = require('./testing_util.js'),
         mockGulpDest = require('mock-gulp-dest')(gulp);
 
     var assert = require('assertthat');
@@ -120,7 +120,7 @@
                                 'todo.html',
                                 'todo.js',
                                 'todo-controller.js',
-                                'todo-controller_test.js',
+                                'todo-controller.spec.js',
                                 'todo.coffee',
                                 'todo-controller.coffee',
                                 'todo-controller_test.coffee',
@@ -155,7 +155,7 @@
                         gulp.start('default').once('stop', function() {
                             mockGulpDest.assertDestContains([
                                 'src/app/todo/todo-controller.js',
-                                'src/app/todo/todo-controller_test.js'
+                                'src/app/todo/todo-controller.spec.js'
                             ]);
                             done();
                         });
