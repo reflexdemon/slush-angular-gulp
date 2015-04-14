@@ -11,10 +11,10 @@ var gulp = require('gulp'),
     lazypipe = require('lazypipe'),
     stylish = require('jshint-stylish'),
     bower = require('./bower'),
+    connect = require('gulp-connect'),
     <%if(middleware){%>
     proxy = require('proxy-middleware'),
     url = require('url'),
-    connect = require('gulp-connect'),
     _ = require('lodash'),
     <%}%>
     isWatching = false;
