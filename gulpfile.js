@@ -16,11 +16,12 @@ var getPackageJson = function() {
 
 var newVer;
 
+var incrementType = yargs.type || 'patch';
 
 gulp.task('init', function() {
     // increment version
     var pkg = getPackageJson();
-    newVer = semver.inc(pkg.version, 'patch');
+    newVer = semver.inc(pkg.version, incrementType);
 });
 
 // Override the tab size for indenting
@@ -72,4 +73,4 @@ gulp.task('git-push', function() {
     });
 });
 
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-tag', 'git-push' /*,'npm-publish'*/ ));
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-tag', 'git-push', 'npm-publish' ));
