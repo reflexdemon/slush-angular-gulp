@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var semver = require('semver');
 var spawn = require('child_process').spawn;
 var yargs = require('yargs');
-
+var gulpSequence = require('gulp-sequence');
 
 /**
  * Pulls the package json from fs
@@ -36,14 +36,14 @@ gulp.task('bump', function() {
 // Run git add
 // src is the file(s) to add (or ./*)
 gulp.task('git-add', function() {
-    return gulp.src('./*')
+    return gulp.src('./package.json')
         .pipe(git.add());
 });
 
 // Run git commit
 // src are the files to commit (or ./*)
 gulp.task('git-commit', function() {
-    return gulp.src('./git-test/*')
+    return gulp.src('./package.json')
         .pipe(git.commit('Publishing ' + newVer));
 });
 
@@ -72,4 +72,4 @@ gulp.task('git-push', function() {
     });
 });
 
-gulp.task('publish', ['bump', 'git-add', 'git-commit', 'git-tag', 'git-push' /*,'npm-publish'*/ ]);
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-tag', 'git-push' /*,'npm-publish'*/ ));
