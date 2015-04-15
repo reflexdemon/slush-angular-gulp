@@ -4,7 +4,7 @@ var git = require('gulp-git');
 var gulp = require('gulp');
 var semver = require('semver');
 var spawn = require('child_process').spawn;
-var yargs = require('yargs');
+var argv = require('yargs').argv;
 var gulpSequence = require('gulp-sequence');
 
 /**
@@ -16,7 +16,7 @@ var getPackageJson = function() {
 
 var newVer;
 // one of  major, premajor, minor, preminor, patch, prepatch, or prerelease
-var incrementType = yargs.type || 'patch';
+var incrementType = argv.type || 'patch';
 
 gulp.task('init', function() {
     // increment version
