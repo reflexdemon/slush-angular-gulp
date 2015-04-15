@@ -15,7 +15,7 @@ var getPackageJson = function() {
 };
 
 var newVer;
-
+// one of  major, premajor, minor, preminor, patch, prepatch, or prerelease
 var incrementType = yargs.type || 'patch';
 
 gulp.task('init', function() {
