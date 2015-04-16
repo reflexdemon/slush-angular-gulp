@@ -77,7 +77,7 @@ gulp.task('git-push', function() {
 // remote is the remote repo
 // branch is the remote branch to push to
 gulp.task('git-push-tag', function() {
-    git.push('origin', 'master', {args: " --tags"}, function(err) {
+    git.push('origin', 'v' + newVer, function(err) {
         if (err) throw err;
     });
 });
