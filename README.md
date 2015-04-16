@@ -1,15 +1,15 @@
-slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)  
-==============
+#slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)  
+
+---
+
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
 
 ![Slush Angular Gulp](https://github.com/reflexdemon/slush-angular-gulp/raw/master/templates/app/src/app/assets/slush-angular-gulp.png "Slush Angular Gulp")
 
-[reflexdemon.github.io/slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp)
-
 # Introduction
 
-All, would like to tell you this generator is build with inspiration from the below projects.
+All, would like to tell you [slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp) is build with inspiration from the below projects.
 
 1. [slush-angular](https://www.npmjs.com/package/slush-angular)
 2. [angular-styleguide](https://github.com/johnpapa/angular-styleguide)
@@ -19,7 +19,7 @@ Moreover, this is just a first step towards integration of all the goodies of th
 
 ## Installation
 
-Install `slush-angular-gulp` globally:
+Install [slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp) globally:
 
 ```bash
 npm install -g slush-angular-gulp
