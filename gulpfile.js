@@ -50,7 +50,7 @@ gulp.task('git-commit', function() {
 
 // Tag the repo with a version
 gulp.task('git-tag', function() {
-    git.tag('v' + newVer, 'Version message', function(err) {
+    git.tag('v' + newVer, 'Publishing slush-angular-gulp@v' + newVer, function(err) {
         if (err) throw err;
     });
 });
@@ -77,9 +77,9 @@ gulp.task('git-push', function() {
 // remote is the remote repo
 // branch is the remote branch to push to
 gulp.task('git-push-tag', function() {
-    git.push('origin', 'v' + newVer, function(err) {
-        if (err) throw err;
-    });
+    git.push(null, null, {args: " --tags"}, function (err) {
+    if (err) throw err;
+  });
 });
 
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag', 'npm-publish' ));
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag'/*, 'npm-publish' */));
