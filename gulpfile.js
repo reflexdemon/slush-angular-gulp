@@ -82,4 +82,4 @@ gulp.task('git-push-tag', function() {
     }).on('close', done);
 });
 
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag'/*, 'npm-publish' */));
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag', 'npm-publish'));
