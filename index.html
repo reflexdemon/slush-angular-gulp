@@ -20,11 +20,15 @@
 
     <section class="main-content">
       <h1>
-<a id="slush-angular-gulp" class="anchor" href="#slush-angular-gulp" aria-hidden="true"><span class="octicon octicon-link"></span></a>slush-angular-gulp</h1>
+<a id="slush-angular-gulp----" class="anchor" href="#slush-angular-gulp----" aria-hidden="true"><span class="octicon octicon-link"></span></a>slush-angular-gulp <a href="http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp"><img src="https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png" alt="GitHub version"></a> <a href="http://badge.fury.io/js/slush-angular-gulp"><img src="https://badge.fury.io/js/slush-angular-gulp.png" alt="npm version"></a>  </h1>
 
 <blockquote>
 <p>A <a href="http://slushjs.github.io">slush</a> generator for AngularJS using the <a href="https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub">Google Angular App Structure Recommendations</a></p>
 </blockquote>
+
+<p><img src="https://github.com/reflexdemon/slush-angular-gulp/raw/master/templates/app/src/app/assets/slush-angular-gulp.png" alt="Slush Angular Gulp" title="Slush Angular Gulp"></p>
+
+<p><a href="http://reflexdemon.github.io/slush-angular-gulp">reflexdemon.github.io/slush-angular-gulp</a></p>
 
 <h1>
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
@@ -33,8 +37,8 @@
 
 <ol>
 <li><a href="https://www.npmjs.com/package/slush-angular">slush-angular</a></li>
-<li><a href="https://github.com/reflexdemon/angular-styleguide">angular-styleguide</a></li>
-<li><a href="https://github.com/yeoman/generator-angular">generator-angular</a></li>
+<li><a href="https://github.com/johnpapa/angular-styleguide">angular-styleguide</a></li>
+<li><a href="https://github.com/yeoman/generator-angular">Yomen generator-angular</a></li>
 </ol>
 
 <p>Moreover, this is just a first step towards integration of all the goodies of the above mentioned projects and expect more on future releases.</p>
@@ -46,13 +50,9 @@
 
 <div class="highlight highlight-bash"><pre>npm install -g slush-angular-gulp</pre></div>
 
-<p>Remember to install <code>slush</code> globally as well, if you haven't already:</p>
+<p>You'll also need to have <code>bower</code>, <code>slush</code> and <code>gulp</code> installed globally for a smooth installation</p>
 
-<div class="highlight highlight-bash"><pre>npm install -g slush</pre></div>
-
-<p>You'll also need to have bower installed for a smooth installation</p>
-
-<div class="highlight highlight-bash"><pre>npm install -g bower</pre></div>
+<div class="highlight highlight-bash"><pre>npm install -g bower gulp slush</pre></div>
 
 <h3>
 <a id="bower-dependency" class="anchor" href="#bower-dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower dependency</h3>
@@ -100,7 +100,7 @@
         │   └── _base.styl/less/scss        # A stylesheet partial with base styles
         └── todo
             ├── todo-controller.js          # The todo controller
-            ├── todo-controller_test.js     # Karma test for the todo controller
+            ├── todo-controller.spec.js     # Karma test for the todo controller
             ├── todo.html                   # The todo list template
             ├── todo.js                     # The todo module
             └── todo.styl/less/scss         # Todo module specific styles
@@ -168,7 +168,7 @@ slush angular-gulp:app</pre></div>
 ? What is the name of your controller? login
 ? What is your AngularJS module name? home
 ? Do you want to include unit testing? Yes
-[06:23:56] [conflict] Creating login-controller_test.js
+[06:23:56] [conflict] Creating login-controller.spec.js
 [06:23:56] [conflict] Creating login-controller.js
 [06:23:56] Finished 'angular-gulp:controller' after 10 s
 [slush] Scaffolding done
@@ -204,7 +204,7 @@ slush angular-gulp:app</pre></div>
 </pre></div>
 
 <p>and
-Produce <code>src/app/home/login-controller_test.js</code></p>
+Produce <code>src/app/home/login-controller.spec.js</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 <span class="pl-c">/**</span>
@@ -329,7 +329,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 ? What is the name of your filter? checkmark
 ? What is your AngularJS module name? home
 ? Do you want to include unit testing? Yes
-[08:35:32] [conflict] Creating checkmark-filter_test.js
+[08:35:32] [conflict] Creating checkmark-filter.spec.js
 [08:35:32] [conflict] Creating checkmark-filter.js
 [08:35:32] Finished 'angular-gulp:filter' after 15 s
 [slush] Scaffolding done
@@ -349,7 +349,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 
 <p>and </p>
 
-<p>Produces <code>src/app/home/checkmark-filter_test.js</code>:</p>
+<p>Produces <code>src/app/home/checkmark-filter.spec.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
