@@ -73,4 +73,13 @@ gulp.task('git-push', function() {
     });
 });
 
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-tag', 'git-push', 'npm-publish' ));
+// Run git push
+// remote is the remote repo
+// branch is the remote branch to push to
+gulp.task('git-push-tag', function() {
+    git.push('origin', 'master', {args: " --tags"}, function(err) {
+        if (err) throw err;
+    });
+});
+
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag', 'npm-publish' ));
