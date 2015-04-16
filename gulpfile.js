@@ -77,9 +77,9 @@ gulp.task('git-push', function() {
 // remote is the remote repo
 // branch is the remote branch to push to
 gulp.task('git-push-tag', function() {
-    git.push(null, null, {args: " --tags"}, function (err) {
-    if (err) throw err;
-  });
+    spawn('git', ['push', ' --tags'], {
+        stdio: 'inherit'
+    }).on('close', done);
 });
 
 gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag'/*, 'npm-publish' */));
