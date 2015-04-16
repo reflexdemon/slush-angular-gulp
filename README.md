@@ -3,7 +3,7 @@ slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslu
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
 
-
+![Slush Angular Gulp](https://github.com/reflexdemon/slush-angular-gulp/raw/master/templates/app/src/app/assets/slush-angular-gulp.png "Slush Angular Gulp")
 
 [reflexdemon.github.io/slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp)
 
