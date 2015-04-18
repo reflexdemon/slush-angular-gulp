@@ -78,6 +78,8 @@ my-angular-app/
             ├── todo.js                     # The todo module
             └── todo.styl/less/scss         # Todo module specific styles
 ```
+Link to [Gulpfile](#gulpfile)
+
 ## Generators
 
 Available generators:
@@ -783,12 +785,24 @@ To make the app ready for deploy to production run:
 gulp dist
 ```
 
+#### Testing Production ready build - a.k.a. dist
+
+To make the app ready for deploy to production run:
+
+```bash
+gulp serve-dist
+```
+
 Now you have a `./dist` folder with all your scripts and stylesheets concatenated and minified, also third party libraries installed with bower will be concatenated and minified into `vendors.min.js` and `vendors.min.css` respectively.
+
+## Contributing guideline
+
+The Contributing guideline can be found here [Contributing](docs/contributing.md).
 
 ## Changelog
 
-TODO
+The Changelog can be found on the [releases section](https://github.com/reflexdemon/slush-angular-gulp/releases).
 
 ## License
 
-MIT
+[MIT](/LICENSE)

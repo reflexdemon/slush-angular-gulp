@@ -1,6 +1,6 @@
 {
   "name": "slush-angular-gulp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Gulp, Angular, Less with Web server, this generator is build with inspiration from the below projects. slush-angular, angular-styleguide and generator-angular",
   "main": "slushfile.js",
   "repository": {
@@ -15,9 +15,16 @@
     "angular",
     "angularjs",
     "google",
-    "gulp",
+    "gulp",,
+    "gulpfile",
     "less",
+    "saas",
+    "stylus",
+    "moca",
+    "bootstrap",
+    "bower",
     "webserver",
+    "livereload",
     "middleware"
   ],
   "author": "Venkateswara Venkatraman Prasanna",
