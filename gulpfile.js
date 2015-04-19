@@ -49,10 +49,10 @@ gulp.task('git-commit', function() {
 });
 
 // Tag the repo with a version
-gulp.task('git-tag', function() {
-    git.tag('v' + newVer, 'Version message', function(err) {
-        if (err) throw err;
-    });
+gulp.task('git-tag', function(done) {
+    spawn('git', ['tag', 'v' + newVer, 'master'], {
+        stdio: 'inherit'
+    }).on('close', done);
 });
 
 /**
@@ -73,4 +73,14 @@ gulp.task('git-push', function() {
     });
 });
 
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-tag', 'git-push', 'npm-publish' ));
+// Run git push
+// remote is the remote repo
+// branch is the remote branch to push to
+gulp.task('git-push-tag', function(done) {
+    spawn('git', ['push', ' --tags'], {
+        stdio: 'inherit'
+    }).on('close', done);
+});
+
+gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag', 'npm-publish'));
+gulp.task('bump', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag'));

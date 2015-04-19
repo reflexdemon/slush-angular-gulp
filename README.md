@@ -1,15 +1,15 @@
-slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)  
-==============
+#slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)  
+
+---
+
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
 
-
-
-[reflexdemon.github.io/slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp)
+![Slush Angular Gulp](https://github.com/reflexdemon/slush-angular-gulp/raw/master/templates/app/src/app/assets/slush-angular-gulp.png "Slush Angular Gulp")
 
 # Introduction
 
-All, would like to tell you this generator is build with inspiration from the below projects.
+All, would like to tell you [slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp) is build with inspiration from the below projects.
 
 1. [slush-angular](https://www.npmjs.com/package/slush-angular)
 2. [angular-styleguide](https://github.com/johnpapa/angular-styleguide)
@@ -19,7 +19,7 @@ Moreover, this is just a first step towards integration of all the goodies of th
 
 ## Installation
 
-Install `slush-angular-gulp` globally:
+Install [slush-angular-gulp](http://reflexdemon.github.io/slush-angular-gulp) globally:
 
 ```bash
 npm install -g slush-angular-gulp
@@ -78,6 +78,8 @@ my-angular-app/
             ├── todo.js                     # The todo module
             └── todo.styl/less/scss         # Todo module specific styles
 ```
+Link to [Gulpfile](#gulpfile)
+
 ## Generators
 
 Available generators:
@@ -783,12 +785,24 @@ To make the app ready for deploy to production run:
 gulp dist
 ```
 
+#### Testing Production ready build - a.k.a. dist
+
+To make the app ready for deploy to production run:
+
+```bash
+gulp serve-dist
+```
+
 Now you have a `./dist` folder with all your scripts and stylesheets concatenated and minified, also third party libraries installed with bower will be concatenated and minified into `vendors.min.js` and `vendors.min.css` respectively.
+
+## Contributing guideline
+
+The Contributing guideline can be found here [Contributing](docs/contributing.md).
 
 ## Changelog
 
-TODO
+The Changelog can be found on the [releases section](https://github.com/reflexdemon/slush-angular-gulp/releases).
 
 ## License
 
-MIT
+[MIT](/LICENSE)
