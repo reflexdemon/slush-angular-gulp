@@ -228,8 +228,11 @@ slush angular-gulp:module user
 ```log
 [06:29:05] Starting 'angular-gulp:module'...
 ? What is the name of your module? user
-[06:29:15] [conflict] Creating user-module.js
-[06:29:15] Finished 'angular-gulp:module' after 9.54 s
+? Which configuration files would you like to be seperate? config, routes
+[00:23:12] [conflict] Creating user-config.js
+[00:23:12] [conflict] Creating user-routes.js
+[00:23:12] [conflict] Creating user-module.js
+[00:23:12] Finished 'angular-gulp:module' after 5.73 s
 [slush] Scaffolding done
 ```
 
@@ -252,6 +255,64 @@ Produces `src/app/user/user-module.js`:
 
 })();
 
+```
+
+or if configs were separated out
+Produces `src/app/user/user-module.js`:
+```
+/**
+ * Creates and initilizes the module user
+ */
+
+(function() {
+        'use strict';
+
+        angular.module('myAngular.user', []);
+}
+
+})();
+```
+`src/app/user/user-config.js`:
+```
+/**
+ * Configuration for the module user
+ */
+
+(function() {
+    'use strict';
+
+
+    angular
+        .module('myAngular.user')
+        .config(config);
+
+    /* @ngInject */
+    function config(){
+        // Configurations
+    }
+
+})();
+```
+`src/app/user/user-routes.js`:
+```
+/**
+ * Sets routes for the module user
+ */
+
+(function() {
+    'use strict';
+
+
+    angular
+        .module('myAngular.user')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(){
+        // Routing
+    }
+
+})();
 ```
 
 ### Directive

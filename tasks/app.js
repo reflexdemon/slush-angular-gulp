@@ -72,7 +72,7 @@
                     _.each(exclude, function(choice) {
                         files.push('!' + __dirname + '/../templates/app/src/app/' + choice + '/**');
                         files.push('!' + __dirname + '/../templates/app/src/app/' + choice);
-                    })
+                    });
                     /*
                     { name: 'my-angular-app',
                       csstype: 'less',
