@@ -3,14 +3,18 @@
  */
 
 (function() {
-        'use strict';
+    'use strict';
 
-        angular
-            .module('<%= scriptAppName %>', [], moduleConfiguration);
+    <% if (config.length>=1){ %>
+    angular
+        .module('<%= scriptAppName %>', []);
+    <% } else { %>
+    angular
+        .module('<%= scriptAppName %>', [], moduleConfiguration);
 
-        /* @ngInject */
-        function moduleConfiguration() {
-            //TODO Have any module specific configurator here
-        }
+    /* @ngInject */
+    function moduleConfiguration() {
+        //TODO Have any module specific configurator here
+    }<% } %>
 
 })();

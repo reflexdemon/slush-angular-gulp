@@ -37,7 +37,7 @@ module.exports.getNameProposal =  function() {
     } catch (e) {
         return path.basename(process.cwd());
     }
-}
+};
 
 /**
  * Organize quize.
@@ -49,7 +49,7 @@ module.exports.getDefaultOption =  function(args, index) {
     } else {
         return null;
     }
-}
+};
 
 /**
  * Get Modules proposal
@@ -66,7 +66,7 @@ module.exports.getModuleProposal =  function(appDir) {
     }
 
     return modules;
-}
+};
 
 /**
  * Get global Options
@@ -81,6 +81,6 @@ module.exports.getGlobalOptions =  function() {
 
     return {
       appDir : argv.appdir || 'src/app',
-      base : argv.base || './',
+      base : argv.base || './'
     };
-}
+};
