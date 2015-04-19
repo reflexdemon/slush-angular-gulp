@@ -248,8 +248,11 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 
 <pre lang="log"><code>[06:29:05] Starting 'angular-gulp:module'...
 ? What is the name of your module? user
-[06:29:15] [conflict] Creating user-module.js
-[06:29:15] Finished 'angular-gulp:module' after 9.54 s
+? Which configuration files would you like to be seperate? config, routes
+[00:23:12] [conflict] Creating user-config.js
+[00:23:12] [conflict] Creating user-routes.js
+[00:23:12] [conflict] Creating user-module.js
+[00:23:12] Finished 'angular-gulp:module' after 5.73 s
 [slush] Scaffolding done
 </code></pre>
 
@@ -272,6 +275,66 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 
 })();
 </pre></div>
+
+<p>or if configs were separated out
+Produces <code>src/app/user/user-module.js</code>:</p>
+
+<pre><code>/**
+ * Creates and initilizes the module user
+ */
+
+(function() {
+        'use strict';
+
+        angular.module('myAngular.user', []);
+}
+
+})();
+</code></pre>
+
+<p><code>src/app/user/user-config.js</code>:</p>
+
+<pre><code>/**
+ * Configuration for the module user
+ */
+
+(function() {
+    'use strict';
+
+
+    angular
+        .module('myAngular.user')
+        .config(config);
+
+    /* @ngInject */
+    function config(){
+        // Configurations
+    }
+
+})();
+</code></pre>
+
+<p><code>src/app/user/user-routes.js</code>:</p>
+
+<pre><code>/**
+ * Sets routes for the module user
+ */
+
+(function() {
+    'use strict';
+
+
+    angular
+        .module('myAngular.user')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(){
+        // Routing
+    }
+
+})();
+</code></pre>
 
 <h3>
 <a id="directive" class="anchor" href="#directive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directive</h3>
