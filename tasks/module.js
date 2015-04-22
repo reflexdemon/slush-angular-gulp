@@ -52,15 +52,15 @@ module.exports = function(gulp) {
                 gulp.src(__dirname + '/../templates/module/config.js')
                     .pipe(template(answers))
                     .pipe(rename(answers.module + '-config.js'))
-                    .pipe(conflict(options.base + options.appDir +'/'+ answers.module))
-                    .pipe(gulp.dest(options.base + options.appDir +'/'+ answers.module))
+                    .pipe(conflict(options.base + options.appDir +'/components/'+ answers.module))
+                    .pipe(gulp.dest(options.base + options.appDir +'/components/'+ answers.module))
             }
             if(answers.config.indexOf('routes')>-1) {
                 gulp.src(__dirname + '/../templates/module/routes.js')
                     .pipe(template(answers))
                     .pipe(rename(answers.module + '-routes.js'))
-                    .pipe(conflict(options.base + options.appDir +'/'+ answers.module))
-                    .pipe(gulp.dest(options.base + options.appDir +'/'+ answers.module))
+                    .pipe(conflict(options.base + options.appDir +'/components/'+ answers.module))
+                    .pipe(gulp.dest(options.base + options.appDir +'/components/'+ answers.module))
             }
             /* todo(Aquila) check what preprocessor is being used and name files appropriately
             if(answers.css) {
@@ -72,8 +72,8 @@ module.exports = function(gulp) {
             gulp.src(__dirname + '/../templates/module/module.js')
                 .pipe(template(answers))
                 .pipe(rename(answers.module + '-module.js'))
-                .pipe(conflict(options.base + options.appDir +'/'+ answers.module))
-                .pipe(gulp.dest(options.base + options.appDir +'/'+ answers.module))
+                .pipe(conflict(options.base + options.appDir +'/components/'+ answers.module))
+                .pipe(gulp.dest(options.base + options.appDir +'/components/'+ answers.module))
                 .on('finish', function() {
                     done();
                 });

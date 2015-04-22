@@ -53,15 +53,15 @@ module.exports = function(gulp) {
                 gulp.src(__dirname + '/../templates/controller/controller.spec.js')
                     .pipe(template(answers))
                     .pipe(rename(answers.fileName + '-controller.spec.js'))
-                    .pipe(conflict(options.base + options.appDir + '/' + answers.module))
-                    .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
+                    .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                    .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
             }
             //Source
             gulp.src(__dirname + '/../templates/controller/controller.js')
                 .pipe(template(answers))
                 .pipe(rename(answers.fileName + '-controller.js'))
-                .pipe(conflict(options.base + options.appDir + '/' + answers.module))
-                .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
+                .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
                 .on('finish', function() {
                     done();
                 });
