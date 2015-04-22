@@ -11,7 +11,7 @@
         $routeProvider
             .when('/todo', {
                 controller: 'TodoCtrl',
-                templateUrl: 'todo/todo.html'
+                templateUrl: '/todo.html'
             });
     }
 

@@ -44,14 +44,14 @@ module.exports = function(gulp) {
             answers.scriptAppName =  _.camelize(answers.nameDashed) + '.' +answers.module ;
             answers.classedName = _.camelize(answers.fileName);
             answers.classedNameDashed = _.slugify(answers.fileName);
-            answers.classedModule = _.capitalize(_.camelize(answers.module));;
+            answers.classedModule = _.capitalize(_.camelize(answers.module));
 
             //Source
             gulp.src(__dirname + '/../templates/decorator/decorator.js')
                 .pipe(template(answers))
                 .pipe(rename(answers.fileName + '-decorator.js'))
-                .pipe(conflict(options.base + options.appDir + '/' + answers.module))
-                .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
+                .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
                 .on('finish', function() {
                     done();
                 });
