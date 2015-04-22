@@ -5,7 +5,7 @@
 (function() {
     'use strict';
 
-    <% if (config.length>=1){ %>
+    <% if (config.indexOf('config')>-1){ %>
     angular
         .module('<%= scriptAppName %>', []);
     <% } else { %>
@@ -15,6 +15,6 @@
     /* @ngInject */
     function moduleConfiguration() {
         //TODO Have any module specific configurator here
-    }<% } %>
-
+    }
+    <% } %>
 })();
