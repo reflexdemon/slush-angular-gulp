@@ -243,7 +243,7 @@ slush angular-gulp:module user
 [slush] Scaffolding done
 ```
 
-Produces `src/app/user/user-module.js`:
+Produces `src/app/components/user/user-module.js`:
 ```javascript
 /**
  * Creates and initilizes the module user
@@ -878,4 +878,4 @@ The Changelog can be found on the [releases section](https://github.com/reflexde
 
 ## License
 
-[MIT](/https://github.com/reflexdemon/slush-angular-gulp/blob/master/LICENSE)
+[MIT](https://github.com/reflexdemon/slush-angular-gulp/blob/master/LICENSE)
