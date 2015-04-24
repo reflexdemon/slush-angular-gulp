@@ -2,7 +2,7 @@
  * cssTypeData configuration
  * @type {cssTypeData}
  */
-module.exports.cssTypeData =  {
+module.exports.cssTypeData = {
     'less': {
         plugin: 'gulp-less',
         pluginVersion: '^1.2.3',
@@ -30,7 +30,7 @@ module.exports.cssTypeData =  {
  * Proposes the names based on the path/package.json file.
  * @return {String} name
  */
-module.exports.getNameProposal =  function() {
+module.exports.getNameProposal = function() {
     var path = require('path');
     try {
         return require(path.join(process.cwd(), 'package.json')).name;
@@ -43,7 +43,7 @@ module.exports.getNameProposal =  function() {
  * Organize quize.
  * @return {String} name
  */
-module.exports.getDefaultOption =  function(args, index) {
+module.exports.getDefaultOption = function(args, index) {
     if (args && args[index]) {
         return args[index];
     } else {
@@ -55,18 +55,23 @@ module.exports.getDefaultOption =  function(args, index) {
  * Get Modules proposal
  * @return {list} dir
  */
-module.exports.getModuleProposal =  function(appDir) {
+module.exports.getModuleProposal = function(appDir) {
     var modules = [];
     var componentsDir = appDir + '/components';
-    var exclude = ['assets', 'styles', 'app.js', 'app.less', 'index.html', 'favicon.ico'];
     var fs = require('fs'),
-    _ = require('lodash');
 
+    var finalList = [];
     if (fs.existsSync(componentsDir)) {
-      modules = _.xor(fs.readdirSync(componentsDir), exclude);
+        modules = fs.readdirSync(componentsDir);
+        for (var i = 0; i < modules.length; i++) {
+            stats = fs.statSync(componentsDir + '/' + modules[i]);
+            if (stats.isDirectory()) {
+                finalList.push(modules[i]);
+            }
+        }
     }
 
-    return modules;
+    return finalList;
 };
 
 /**
@@ -77,11 +82,11 @@ module.exports.getModuleProposal =  function(appDir) {
  *  Note: if both are padssed then it will search on base + appdir
  * @return {Object} name
  */
-module.exports.getGlobalOptions =  function() {
+module.exports.getGlobalOptions = function() {
     var argv = require('yargs').argv;
 
     return {
-      appDir : argv.appdir || 'src/app',
-      base : argv.base || './'
+        appDir: argv.appdir || 'src/app',
+        base: argv.base || './'
     };
 };
