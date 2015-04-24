@@ -57,12 +57,13 @@ module.exports.getDefaultOption =  function(args, index) {
  */
 module.exports.getModuleProposal =  function(appDir) {
     var modules = [];
+    var componentsDir = appDir + '/components';
     var exclude = ['assets', 'styles', 'app.js', 'app.less', 'index.html', 'favicon.ico'];
     var fs = require('fs'),
     _ = require('lodash');
 
-    if (fs.existsSync(appDir)) {
-      modules = _.xor(fs.readdirSync(appDir), exclude);
+    if (fs.existsSync(componentsDir)) {
+      modules = _.xor(fs.readdirSync(componentsDir), exclude);
     }
 
     return modules;
