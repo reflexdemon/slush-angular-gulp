@@ -1,6 +1,6 @@
 {
   "name": "slush-angular-gulp",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Gulp, Angular, Less with Web server, this generator is build with inspiration from the below projects. slush-angular, angular-styleguide and generator-angular",
   "main": "slushfile.js",
   "repository": {
@@ -53,7 +53,6 @@
   },
   "devDependencies": {
     "chai": "*",
-    "gulp": "^3.8.11",
     "gulp-bump": "^0.3.0",
     "gulp-git": "^1.2.0",
     "gulp-sequence": "^0.3.2",
