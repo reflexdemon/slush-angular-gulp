@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Slush-angular-gulp by reflexdemon</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Slush-angular-gulp</h1>
-      <h2 class="project-tagline">First step towards integration of all the goodies of the open source projects </h2>
-      <a href="https://github.com/reflexdemon/slush-angular-gulp" class="btn">View on GitHub</a>
-      <a href="https://github.com/reflexdemon/slush-angular-gulp/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/reflexdemon/slush-angular-gulp/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h1>
+    <div class="wrapper">
+      <header>
+        <h1>Slush-angular-gulp</h1>
+        <p>First step towards integration of all the goodies of the open source projects </p>
+        <p class="view"><a href="https://github.com/reflexdemon/slush-angular-gulp">View the Project on GitHub <small>reflexdemon/slush-angular-gulp</small></a></p>
+        <ul>
+          <li><a href="https://github.com/reflexdemon/slush-angular-gulp/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/reflexdemon/slush-angular-gulp/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/reflexdemon/slush-angular-gulp">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a id="slush-angular-gulp--" class="anchor" href="#slush-angular-gulp--" aria-hidden="true"><span class="octicon octicon-link"></span></a>slush-angular-gulp <a href="http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp"><img src="https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png" alt="GitHub version"></a> <a href="http://badge.fury.io/js/slush-angular-gulp"><img src="https://badge.fury.io/js/slush-angular-gulp.png" alt="npm version"></a>
 </h1>
 
@@ -80,31 +88,37 @@
 <p>The project structure with the Todo list example included will look like this:</p>
 
 <pre><code>my-angular-app/
-├── .bowerrc
-├── .csslintrc
-├── .editorconfig
-├── .gitignore
-├── .jshintrc
+├── README.md
 ├── bower.json
 ├── gulpfile.js                             # See "Gulpfile" below
 ├── karma.conf.js
-├── README.md
 ├── package.json
 └── src
     └── app
         ├── app.js                          # Main app module and configuration
         ├── app.styl/less/scss              # Main app stylesheet
-        ├── index.html                      # The index.html / app layout template
         ├── assets                          # A folder meant for images and such...
-        │   └── .gitkeep
-        ├── styles
-        │   └── _base.styl/less/scss        # A stylesheet partial with base styles
-        └── todo
-            ├── todo-controller.js          # The todo controller
-            ├── todo-controller.spec.js     # Karma test for the todo controller
-            ├── todo.html                   # The todo list template
-            ├── todo.js                     # The todo module
-            └── todo.styl/less/scss         # Todo module specific styles
+        │   └── slush-angular-gulp.png
+        ├── components
+        │   ├── heat
+        │   │   ├── aheat.js
+        │   │   ├── heat-controller.js
+        │   │   ├── heat-route.js
+        │   │   ├── service
+        │   │   │   └── heat_service.js
+        │   │   └── view
+        │   │       └── heat.html
+        │   └── todo
+        │       ├── todo-controller.js          # The todo controller
+        │       ├── todo-controller.spec.js     # Karma test for the todo controller
+        │       ├── todo-route.js               # Todo module route configuration
+        │       ├── todo.html                   # The todo list template
+        │       ├── todo.js                     # The todo module
+        │       └── todo.styl/less/scss         # Todo module specific styles
+        ├── index.html                      # The index.html / app layout template
+        └── styles
+            └── _base.styl/less/scss        # A stylesheet partial with base styles
+
 </code></pre>
 
 <p>Link to <a href="#gulpfile">Gulpfile</a></p>
@@ -157,7 +171,7 @@ slush angular-gulp:app</pre></div>
 <h3>
 <a id="controller" class="anchor" href="#controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controller</h3>
 
-<p>Generates a controller in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a controller in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -167,28 +181,32 @@ slush angular-gulp:app</pre></div>
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:controller login</pre></div>
 
-<pre lang="log"><code>[06:23:46] Starting 'angular-gulp:controller'...
+<pre lang="log"><code>[06:33:12] Starting 'angular-gulp:controller'...
 ? What is the name of your controller? login
-? What is your AngularJS module name? home
+? What is your AngularJS module name? user
 ? Do you want to include unit testing? Yes
-[06:23:56] [conflict] Creating login-controller.spec.js
-[06:23:56] [conflict] Creating login-controller.js
-[06:23:56] Finished 'angular-gulp:controller' after 10 s
+[06:33:41] [conflict] Creating login-controller.js
+[06:33:41] [conflict] Creating login-controller.spec.js
+[06:33:41] Finished 'angular-gulp:controller' after 29 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/home/login-controller.js</code>:</p>
+<p>Produces <code>src/app/user/login-controller.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
+    angular
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
+        .controller(<span class="pl-s"><span class="pl-pds">'</span>LoginCtrl<span class="pl-pds">'</span></span>, LoginCtrl);
+    <span class="pl-c">//////////////////////</span>
 
     <span class="pl-c">/**</span>
 <span class="pl-c">     * @ngdoc function</span>
-<span class="pl-c">     * @name myAngular.home.controller:LoginCtrl</span>
+<span class="pl-c">     * @name myAngularApp.user.controller:LoginCtrl</span>
 <span class="pl-c">     * @description</span>
 <span class="pl-c">     * # LoginCtrl</span>
-<span class="pl-c">     * Controller of the myAngular.home</span>
+<span class="pl-c">     * Controller of the myAngularApp.user</span>
 <span class="pl-c">     * @ngInject</span>
 <span class="pl-c">     */</span>
     <span class="pl-k">function</span> <span class="pl-en">LoginCtrl</span>() {
@@ -199,24 +217,20 @@ slush angular-gulp:app</pre></div>
         ];
     }
 
-    angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>)
-        .controller(<span class="pl-s"><span class="pl-pds">'</span>LoginCtrl<span class="pl-pds">'</span></span>, LoginCtrl);
-
 })();
 </pre></div>
 
 <p>and
-Produce <code>src/app/home/login-controller.spec.js</code></p>
+Produce <code>src/app/user/login-controller.spec.js</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 <span class="pl-c">/**</span>
-<span class="pl-c"> * Simple test class for LoginCtrl on myAngular.home</span>
+<span class="pl-c"> * Simple test class for LoginCtrl on myAngularApp.user</span>
 <span class="pl-c"> */</span>
 describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
 
   <span class="pl-c">// load the controller's module</span>
-  beforeEach(<span class="pl-c1">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>));
+  beforeEach(<span class="pl-c1">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>));
 
   <span class="pl-k">var</span> LoginCtrl;
 
@@ -231,12 +245,13 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
     expect(LoginCtrl.awesomeThings.<span class="pl-c1">length</span>).toBe(<span class="pl-c1">3</span>);
   });
 });
+
 </pre></div>
 
 <h3>
 <a id="module" class="anchor" href="#module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module</h3>
 
-<p>Generates a module in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a module in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -246,17 +261,17 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:module user</pre></div>
 
-<pre lang="log"><code>[06:29:05] Starting 'angular-gulp:module'...
+<pre lang="log"><code>[21:55:01] Starting 'angular-gulp:module'...
 ? What is the name of your module? user
 ? Which configuration files would you like to be seperate? config, routes
-[00:23:12] [conflict] Creating user-config.js
-[00:23:12] [conflict] Creating user-routes.js
-[00:23:12] [conflict] Creating user-module.js
-[00:23:12] Finished 'angular-gulp:module' after 5.73 s
+[21:55:36] [conflict] Creating user-module.js
+[21:55:36] [conflict] Creating user-config.js
+[21:55:36] [conflict] Creating user-routes.js
+[21:55:36] Finished 'angular-gulp:module' after 36 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/user/user-module.js</code>:</p>
+<p>Produces <code>src/app/components/user/user-module.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-c">/**</span>
 <span class="pl-c"> * Creates and initilizes the module user</span>
@@ -277,7 +292,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>Controller: LoginCtrl<s
 </pre></div>
 
 <p>or if configs were separated out
-Produces <code>src/app/user/user-module.js</code>:</p>
+Produces <code>src/app/components/user/user-module.js</code>:</p>
 
 <pre><code>/**
  * Creates and initilizes the module user
@@ -292,7 +307,7 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 })();
 </code></pre>
 
-<p><code>src/app/user/user-config.js</code>:</p>
+<p><code>src/app/components/user/user-config.js</code>:</p>
 
 <pre><code>/**
  * Configuration for the module user
@@ -314,7 +329,7 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 })();
 </code></pre>
 
-<p><code>src/app/user/user-routes.js</code>:</p>
+<p><code>src/app/components/user/user-routes.js</code>:</p>
 
 <pre><code>/**
  * Sets routes for the module user
@@ -339,7 +354,7 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 <h3>
 <a id="directive" class="anchor" href="#directive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directive</h3>
 
-<p>Generates a directive in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a directive in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -349,16 +364,15 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:directive awesome-thing</pre></div>
 
-<pre lang="log"><code>[08:08:05] Starting 'angular-gulp:directive'...
+<pre lang="log"><code>[06:37:03] Starting 'angular-gulp:directive'...
 ? What is the name of your directive? awesome-thing
 ? What is your AngularJS module name? user
-? Replace awesome-thing-directive.js? replace
-[08:08:11] [conflict] Overwriting awesome-thing-directive.js
-[08:08:11] Finished 'angular-gulp:directive' after 5.68 s
+[06:37:07] [conflict] Creating awesome-thing-directive.js
+[06:37:07] Finished 'angular-gulp:directive' after 4.57 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/user/awesome-thing-directive.js</code>:</p>
+<p>Produces <code>src/app/component/user/awesome-thing-directive.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>
 <span class="pl-c">/**</span>
@@ -367,7 +381,7 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 <span class="pl-c"> */</span>
 (<span class="pl-k">function</span>() {
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.user<span class="pl-pds">'</span></span>)
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
         .directive(<span class="pl-s"><span class="pl-pds">'</span>awesomeThing<span class="pl-pds">'</span></span>, awesomeThing );
 
     <span class="pl-k">function</span> <span class="pl-en">awesomeThing</span> () {
@@ -376,12 +390,13 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 
 })();
 
+
 </pre></div>
 
 <h3>
 <a id="filter" class="anchor" href="#filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter</h3>
 
-<p>Generates a filter in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a filter in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -391,37 +406,43 @@ Produces <code>src/app/user/user-module.js</code>:</p>
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:filter checkmark</pre></div>
 
-<pre lang="log"><code>[08:35:16] Starting 'angular-gulp:filter'...
+<pre lang="log"><code>[06:39:02] Starting 'angular-gulp:filter'...
 ? What is the name of your filter? checkmark
-? What is your AngularJS module name? home
+? What is your AngularJS module name? user
 ? Do you want to include unit testing? Yes
-[08:35:32] [conflict] Creating checkmark-filter.spec.js
-[08:35:32] [conflict] Creating checkmark-filter.js
-[08:35:32] Finished 'angular-gulp:filter' after 15 s
+[06:39:11] [conflict] Creating checkmark-filter.js
+[06:39:11] [conflict] Creating checkmark-filter.spec.js
+[06:39:11] Finished 'angular-gulp:filter' after 9.3 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/home/checkmark-filter.js</code>:</p>
+<p>Produces <code>src/app/component/user/checkmark-filter.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
-    angular.module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>).filter(<span class="pl-s"><span class="pl-pds">'</span>checkmark<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
-        <span class="pl-k">return</span> <span class="pl-k">function</span>(<span class="pl-smi">input</span>) {
+    angular
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>).filter(<span class="pl-s"><span class="pl-pds">'</span>checkmark<span class="pl-pds">'</span></span>, checkmarkFilter);
+    <span class="pl-c">////////////////////</span>
+
+    <span class="pl-k">function</span> <span class="pl-en">checkmark</span>() {
+        <span class="pl-k">return</span> <span class="pl-k">function</span> (<span class="pl-smi">input</span>) {
             <span class="pl-k">return</span> input <span class="pl-k">?</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\u</span>2713<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\u</span>2718<span class="pl-pds">'</span></span>;
-        };
-    });
-})();</pre></div>
+    };
+}
+})();
+</pre></div>
 
 <p>and </p>
 
-<p>Produces <code>src/app/home/checkmark-filter.spec.js</code>:</p>
+<p>Produces <code>src/app/component/user/checkmark-filter.spec.js</code>:</p>
 
-<div class="highlight highlight-javascript"><pre><span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
 describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
 
-  beforeEach(<span class="pl-c1">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>));
+  beforeEach(<span class="pl-c1">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>));
 
   describe(<span class="pl-s"><span class="pl-pds">'</span>checkmark<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
 
@@ -438,7 +459,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 <h3>
 <a id="route" class="anchor" href="#route" aria-hidden="true"><span class="octicon octicon-link"></span></a>Route</h3>
 
-<p>Generates a route in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a route in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -448,22 +469,21 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:route user</pre></div>
 
-<pre lang="log"><code>[09:55:24] Starting 'angular-gulp:route'...
+<pre lang="log"><code>[06:41:04] Starting 'angular-gulp:route'...
 ? What is the name of your route? user
 ? What is your AngularJS module name? user
-? Replace user-route.js? replace
-[09:55:34] [conflict] Overwriting user-route.js
-[09:55:34] Finished 'angular-gulp:route' after 9.49 s
+[06:41:07] [conflict] Creating user-route.js
+[06:41:07] Finished 'angular-gulp:route' after 2.96 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/home/user-route.js</code>:</p>
+<p>Produces <code>src/app/component/user/user-route.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.user<span class="pl-pds">'</span></span>)
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
         .config( userRoute);
 
 
@@ -482,7 +502,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 <h3>
 <a id="service" class="anchor" href="#service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service</h3>
 
-<p>Generates a service in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a service in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -492,21 +512,21 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:service session</pre></div>
 
-<pre lang="log"><code>[13:28:05] Starting 'angular-gulp:service'...
+<pre lang="log"><code>[06:43:42] Starting 'angular-gulp:service'...
 ? What is the name of your service? session
-? What is your AngularJS module name? home
-[13:28:13] [conflict] Creating session-service.js
-[13:28:13] Finished 'angular-gulp:service' after 8.21 s
+? What is your AngularJS module name? user
+[06:43:48] [conflict] Creating session-service.js
+[06:43:48] Finished 'angular-gulp:service' after 5.58 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/home/session-service.js</code>:</p>
+<p>Produces <code>src/app/user/session-service.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>)
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
         .service(<span class="pl-s"><span class="pl-pds">'</span>sessionService<span class="pl-pds">'</span></span>,  sessionService);
 
 
@@ -524,11 +544,11 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 
         <span class="pl-k">function</span> <span class="pl-en">save</span>() {
             <span class="pl-c">/* */</span>
-        };
+        }
 
         <span class="pl-k">function</span> <span class="pl-en">validate</span>() {
             <span class="pl-c">/* */</span>
-        };
+        }
     }
 
 })();
@@ -537,7 +557,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 <h3>
 <a id="factory" class="anchor" href="#factory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Factory</h3>
 
-<p>Generates a factory in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a factory in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -547,11 +567,11 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:factory session</pre></div>
 
-<pre lang="log"><code>[13:28:05] Starting 'angular-gulp:factory'...
+<pre lang="log"><code>[06:46:32] Starting 'angular-gulp:factory'...
 ? What is the name of your factory? session
-? What is your AngularJS module name? home
-[13:28:13] [conflict] Creating session-factory.js
-[13:28:13] Finished 'angular-gulp:factory' after 8.21 s
+? What is your AngularJS module name? user
+[06:46:38] [conflict] Creating session-factory.js
+[06:46:38] Finished 'angular-gulp:factory' after 6.07 s
 [slush] Scaffolding done
 </code></pre>
 
@@ -561,7 +581,7 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.home<span class="pl-pds">'</span></span>)
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
         .factory(<span class="pl-s"><span class="pl-pds">'</span>sessionFactory<span class="pl-pds">'</span></span>,  sessionFactory);
 
 
@@ -587,12 +607,13 @@ describe(<span class="pl-s"><span class="pl-pds">'</span>filter<span class="pl-p
     }
 
 })();
+
 </pre></div>
 
 <h3>
 <a id="provider" class="anchor" href="#provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provider</h3>
 
-<p>Generates a provider in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a provider in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -645,7 +666,7 @@ angular
 <h3>
 <a id="constant" class="anchor" href="#constant" aria-hidden="true"><span class="octicon octicon-link"></span></a>Constant</h3>
 
-<p>Generates a constant in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a constant in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -655,22 +676,22 @@ angular
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:constant apiKey</pre></div>
 
-<pre lang="log"><code>[14:59:07] Starting 'angular-gulp:constant'...
-? What is the name of your constant? appKey
-? What is your AngularJS module name? customer
-[14:59:13] [conflict] Creating appKey-constant.js
-[14:59:13] Finished 'angular-gulp:constant' after 5.56 s
+<pre lang="log"><code>[06:47:37] Starting 'angular-gulp:constant'...
+? What is the name of your constant? apiKey
+? What is your AngularJS module name? user
+[06:47:44] [conflict] Creating apiKey-constant.js
+[06:47:44] Finished 'angular-gulp:constant' after 7.11 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/customer/appKey-constant.js</code>:</p>
+<p>Produces <code>src/app/component/user/appKey-constant.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.customer<span class="pl-pds">'</span></span>)
-        .constant(<span class="pl-s"><span class="pl-pds">'</span>appKey<span class="pl-pds">'</span></span>,  <span class="pl-s"><span class="pl-pds">'</span>appKey<span class="pl-pds">'</span></span>);
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
+        .constant(<span class="pl-s"><span class="pl-pds">'</span>apiKey<span class="pl-pds">'</span></span>,  <span class="pl-s"><span class="pl-pds">'</span>apiKey<span class="pl-pds">'</span></span>);
 
 
 })();
@@ -680,7 +701,7 @@ angular
 <h3>
 <a id="value" class="anchor" href="#value" aria-hidden="true"><span class="octicon octicon-link"></span></a>Value</h3>
 
-<p>Generates a value in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a value in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -688,36 +709,35 @@ angular
 
 <p>Example:</p>
 
-<div class="highlight highlight-bash"><pre>slush angular-gulp:value api_key</pre></div>
+<div class="highlight highlight-bash"><pre>slush angular-gulp:value baseUrl</pre></div>
 
-<pre lang="log"><code>[14:43:35] Starting 'angular-gulp:value'...
-? What is the name of your value? api_key
-? What is your AngularJS module name? heat
-[14:43:43] [conflict] Creating api_key-value.js
-[14:43:43] Finished 'angular-gulp:value' after 7.41 s
+<pre lang="log"><code>[06:49:57] Starting 'angular-gulp:value'...
+? What is the name of your value? baseUrl
+? What is your AngularJS module name? user
+[06:50:01] [conflict] Creating baseUrl-value.js
+[06:50:01] Finished 'angular-gulp:value' after 3.64 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/heat/api_key-value.js</code>:</p>
+<p>Produces <code>src/app/component/user/baseUrl-value.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>(<span class="pl-k">function</span>() {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
-    <span class="pl-k">var</span> apiKeyValue <span class="pl-k">=</span> {};
+    <span class="pl-k">var</span> baseUrlValue <span class="pl-k">=</span> {};
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.heat<span class="pl-pds">'</span></span>)
-        .<span class="pl-c1">value</span>(<span class="pl-s"><span class="pl-pds">'</span>apiKey<span class="pl-pds">'</span></span>,  apiKeyValue);
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
+        .<span class="pl-c1">value</span>(<span class="pl-s"><span class="pl-pds">'</span>baseUrl<span class="pl-pds">'</span></span>,  baseUrlValue);
 
 
 })();
-
 </pre></div>
 
 <h3>
 <a id="decorator" class="anchor" href="#decorator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decorator</h3>
 
-<p>Generates a decorator in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a decorator in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -727,38 +747,38 @@ angular
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:decorator exception</pre></div>
 
-<pre lang="log"><code>[15:12:54] Starting 'angular-gulp:decorator'...
+<pre lang="log"><code>[06:52:06] Starting 'angular-gulp:decorator'...
 ? What is the name of your decorator? exception
-? What is your AngularJS module name? customer
-[15:13:08] [conflict] Creating exception-decorator.js
-[15:13:08] Finished 'angular-gulp:decorator' after 14 s
+? What is your AngularJS module name? user
+[06:52:11] [conflict] Creating exception-decorator.js
+[06:52:11] Finished 'angular-gulp:decorator' after 4.52 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/customer/exception-decorator.js</code>:</p>
+<p>Produces <code>src/app/component/user/exception-decorator.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>
 (<span class="pl-k">function</span> () {
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>
 
     angular
-        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngular.customer<span class="pl-pds">'</span></span>)
-    .config(exceptionConfig);
+        .module(<span class="pl-s"><span class="pl-pds">'</span>myAngularApp.user<span class="pl-pds">'</span></span>)
+        .config(exceptionConfig);
 
-<span class="pl-c">/* @ngInject */</span>
-<span class="pl-k">function</span> <span class="pl-en">exceptionConfig</span>(<span class="pl-smi">$provide</span>) {
-    $provide.decorator(<span class="pl-s"><span class="pl-pds">'</span>$exceptionHandler<span class="pl-pds">'</span></span>, extendexceptionHandler);
-}
+    <span class="pl-c">/* @ngInject */</span>
+    <span class="pl-k">function</span> <span class="pl-en">exceptionConfig</span>(<span class="pl-smi">$provide</span>) {
+        $provide.decorator(<span class="pl-s"><span class="pl-pds">'</span>$exceptionHandler<span class="pl-pds">'</span></span>, extendexceptionHandler);
+    }
 
-<span class="pl-c">/* @ngInject */</span>
-<span class="pl-k">function</span> <span class="pl-en">extendexceptionHandler</span>(<span class="pl-smi">$delegate</span>) {
-    <span class="pl-k">return</span> <span class="pl-k">function</span>(<span class="pl-smi">exception</span>, <span class="pl-smi">cause</span>) {
-        $delegate(exception, cause);
-        <span class="pl-k">var</span> data <span class="pl-k">=</span> {
-            exception<span class="pl-k">:</span> exception
+    <span class="pl-c">/* @ngInject */</span>
+    <span class="pl-k">function</span> <span class="pl-en">extendexceptionHandler</span>(<span class="pl-smi">$delegate</span>) {
+        <span class="pl-k">return</span> <span class="pl-k">function</span>(<span class="pl-smi">exception</span>, <span class="pl-smi">cause</span>) {
+            $delegate(exception, cause);
+            <span class="pl-k">var</span> data <span class="pl-k">=</span> {
+                exception<span class="pl-k">:</span> exception
+            };
         };
-    };
-}
+    }
 
 })();
 
@@ -767,7 +787,7 @@ angular
 <h3>
 <a id="view" class="anchor" href="#view" aria-hidden="true"><span class="octicon octicon-link"></span></a>View</h3>
 
-<p>Generates a view in <code>src/app/&lt;module&gt;</code>.</p>
+<p>Generates a view in <code>src/app/components/&lt;module&gt;</code>.</p>
 
 <p>Syntax:</p>
 
@@ -777,17 +797,17 @@ angular
 
 <div class="highlight highlight-bash"><pre>slush angular-gulp:view user</pre></div>
 
-<pre lang="log"><code>[15:25:00] Starting 'angular-gulp:view'...
+<pre lang="log"><code>[06:54:05] Starting 'angular-gulp:view'...
 ? What is the name of your view? user
 ? What is your AngularJS module name? user
-[15:25:27] [conflict] Creating user-view.html
-[15:25:27] Finished 'angular-gulp:view' after 27 s
+[06:54:17] [conflict] Creating user-view.html
+[06:54:17] Finished 'angular-gulp:view' after 12 s
 [slush] Scaffolding done
 </code></pre>
 
-<p>Produces <code>src/app/user/user-view.html</code>:</p>
+<p>Produces <code>src/app/component/user/user-view.html</code>:</p>
 
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">p</span>&gt;This is the user' view&lt;/<span class="pl-ent">p</span>&gt;</pre></div>
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">p</span>&gt;This is the user view&lt;/<span class="pl-ent">p</span>&gt;</pre></div>
 
 <h3>
 <a id="gulpfile" class="anchor" href="#gulpfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gulpfile</h3>
@@ -829,7 +849,7 @@ angular
 <h2>
 <a id="contributing-guideline" class="anchor" href="#contributing-guideline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing guideline</h2>
 
-<p>The Contributing guideline can be found here <a href="docs/contributing.md">Contributing</a>.</p>
+<p>The Contributing guideline can be found here <a href="https://github.com/reflexdemon/slush-angular-gulp/blob/master/docs/contributing.md">Contributing</a>.</p>
 
 <h2>
 <a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
@@ -839,17 +859,15 @@ angular
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p><a href="/LICENSE">MIT</a></p>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/reflexdemon/slush-angular-gulp">Slush-angular-gulp</a> is maintained by <a href="https://github.com/reflexdemon">reflexdemon</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-            <script type="text/javascript">
+<p><a href="https://github.com/reflexdemon/slush-angular-gulp/blob/master/LICENSE">MIT</a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/reflexdemon">reflexdemon</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -862,4 +880,3 @@ angular
 
   </body>
 </html>
-
