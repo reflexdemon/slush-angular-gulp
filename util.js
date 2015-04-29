@@ -58,7 +58,7 @@ module.exports.getDefaultOption = function(args, index) {
 module.exports.getModuleProposal = function(appDir) {
     var modules = [];
     var componentsDir = appDir + '/components';
-    var fs = require('fs'),
+    var fs = require('fs');
 
     var finalList = [];
     if (fs.existsSync(componentsDir)) {
