@@ -15,7 +15,7 @@ module.exports = function ( karma ) {
     ],
 
     frameworks: [ 'mocha', 'chai' ],
-    plugins: [ 'karma-mocha', 'karma-chai', 'karma-phantomjs-launcher' ],
+    plugins: [ 'karma-mocha', 'karma-chai', 'karma-phantomjs-launcher', 'karma-chrome-launcher' ],
 
     /**
      * How to report, by default.
@@ -54,7 +54,8 @@ module.exports = function ( karma ) {
      * the aesthetic advantage of not launching a browser every time you save.
      */
     browsers: [
-      'PhantomJS'
+      //'PhantomJS'
+      'Chrome'
     ]
   });
 };
