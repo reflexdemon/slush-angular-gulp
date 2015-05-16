@@ -52,31 +52,37 @@ The project structure with the Todo list example included will look like this:
 
 ```
 my-angular-app/
-├── .bowerrc
-├── .csslintrc
-├── .editorconfig
-├── .gitignore
-├── .jshintrc
+├── README.md
 ├── bower.json
 ├── gulpfile.js                             # See "Gulpfile" below
 ├── karma.conf.js
-├── README.md
 ├── package.json
 └── src
     └── app
         ├── app.js                          # Main app module and configuration
         ├── app.styl/less/scss              # Main app stylesheet
-        ├── index.html                      # The index.html / app layout template
         ├── assets                          # A folder meant for images and such...
-        │   └── .gitkeep
-        ├── styles
-        │   └── _base.styl/less/scss        # A stylesheet partial with base styles
-        └── todo
-            ├── todo-controller.js          # The todo controller
-            ├── todo-controller.spec.js     # Karma test for the todo controller
-            ├── todo.html                   # The todo list template
-            ├── todo.js                     # The todo module
-            └── todo.styl/less/scss         # Todo module specific styles
+        │   └── slush-angular-gulp.png
+        ├── components
+        │   ├── heat
+        │   │   ├── aheat.js
+        │   │   ├── heat-controller.js
+        │   │   ├── heat-route.js
+        │   │   ├── service
+        │   │   │   └── heat_service.js
+        │   │   └── view
+        │   │       └── heat.html
+        │   └── todo
+        │       ├── todo-controller.js          # The todo controller
+        │       ├── todo-controller.spec.js     # Karma test for the todo controller
+        │       ├── todo-route.js               # Todo module route configuration
+        │       ├── todo.html                   # The todo list template
+        │       ├── todo.js                     # The todo module
+        │       └── todo.styl/less/scss         # Todo module specific styles
+        ├── index.html                      # The index.html / app layout template
+        └── styles
+            └── _base.styl/less/scss        # A stylesheet partial with base styles
+
 ```
 Link to [Gulpfile](#gulpfile)
 
@@ -128,7 +134,7 @@ You will now be prompted to give your new AngularJS app a name, which will be da
 
 
 ### Controller
-Generates a controller in `src/app/<module>`.
+Generates a controller in `src/app/components/<module>`.
 
 Syntax:
 
@@ -143,28 +149,32 @@ slush angular-gulp:controller login
 ```
 
 ```log
-[06:23:46] Starting 'angular-gulp:controller'...
+[06:33:12] Starting 'angular-gulp:controller'...
 ? What is the name of your controller? login
-? What is your AngularJS module name? home
+? What is your AngularJS module name? user
 ? Do you want to include unit testing? Yes
-[06:23:56] [conflict] Creating login-controller.spec.js
-[06:23:56] [conflict] Creating login-controller.js
-[06:23:56] Finished 'angular-gulp:controller' after 10 s
+[06:33:41] [conflict] Creating login-controller.js
+[06:33:41] [conflict] Creating login-controller.spec.js
+[06:33:41] Finished 'angular-gulp:controller' after 29 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/home/login-controller.js`:
+Produces `src/app/user/login-controller.js`:
 ```javascript
 (function() {
     'use strict';
 
+    angular
+        .module('myAngularApp.user')
+        .controller('LoginCtrl', LoginCtrl);
+    //////////////////////
 
     /**
      * @ngdoc function
-     * @name myAngular.home.controller:LoginCtrl
+     * @name myAngularApp.user.controller:LoginCtrl
      * @description
      * # LoginCtrl
-     * Controller of the myAngular.home
+     * Controller of the myAngularApp.user
      * @ngInject
      */
     function LoginCtrl() {
@@ -175,24 +185,20 @@ Produces `src/app/home/login-controller.js`:
         ];
     }
 
-    angular
-        .module('myAngular.home')
-        .controller('LoginCtrl', LoginCtrl);
-
 })();
 
 ```
 and
-Produce `src/app/home/login-controller.spec.js`
+Produce `src/app/user/login-controller.spec.js`
 ```javascript
 'use strict';
 /**
- * Simple test class for LoginCtrl on myAngular.home
+ * Simple test class for LoginCtrl on myAngularApp.user
  */
 describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('myAngular.home'));
+  beforeEach(module('myAngularApp.user'));
 
   var LoginCtrl;
 
@@ -208,10 +214,11 @@ describe('Controller: LoginCtrl', function () {
   });
 });
 
+
 ```
 
 ### Module
-Generates a module in `src/app/<module>`.
+Generates a module in `src/app/components/<module>`.
 
 Syntax:
 
@@ -226,17 +233,17 @@ slush angular-gulp:module user
 ```
 
 ```log
-[06:29:05] Starting 'angular-gulp:module'...
+[21:55:01] Starting 'angular-gulp:module'...
 ? What is the name of your module? user
 ? Which configuration files would you like to be seperate? config, routes
-[00:23:12] [conflict] Creating user-config.js
-[00:23:12] [conflict] Creating user-routes.js
-[00:23:12] [conflict] Creating user-module.js
-[00:23:12] Finished 'angular-gulp:module' after 5.73 s
+[21:55:36] [conflict] Creating user-module.js
+[21:55:36] [conflict] Creating user-config.js
+[21:55:36] [conflict] Creating user-routes.js
+[21:55:36] Finished 'angular-gulp:module' after 36 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/user/user-module.js`:
+Produces `src/app/components/user/user-module.js`:
 ```javascript
 /**
  * Creates and initilizes the module user
@@ -258,7 +265,7 @@ Produces `src/app/user/user-module.js`:
 ```
 
 or if configs were separated out
-Produces `src/app/user/user-module.js`:
+Produces `src/app/components/user/user-module.js`:
 ```
 /**
  * Creates and initilizes the module user
@@ -272,7 +279,7 @@ Produces `src/app/user/user-module.js`:
 
 })();
 ```
-`src/app/user/user-config.js`:
+`src/app/components/user/user-config.js`:
 ```
 /**
  * Configuration for the module user
@@ -293,7 +300,7 @@ Produces `src/app/user/user-module.js`:
 
 })();
 ```
-`src/app/user/user-routes.js`:
+`src/app/components/user/user-routes.js`:
 ```
 /**
  * Sets routes for the module user
@@ -316,7 +323,7 @@ Produces `src/app/user/user-module.js`:
 ```
 
 ### Directive
-Generates a directive in `src/app/<module>`.
+Generates a directive in `src/app/components/<module>`.
 
 Syntax:
 
@@ -331,16 +338,15 @@ slush angular-gulp:directive awesome-thing
 ```
 
 ```log
-[08:08:05] Starting 'angular-gulp:directive'...
+[06:37:03] Starting 'angular-gulp:directive'...
 ? What is the name of your directive? awesome-thing
 ? What is your AngularJS module name? user
-? Replace awesome-thing-directive.js? replace
-[08:08:11] [conflict] Overwriting awesome-thing-directive.js
-[08:08:11] Finished 'angular-gulp:directive' after 5.68 s
+[06:37:07] [conflict] Creating awesome-thing-directive.js
+[06:37:07] Finished 'angular-gulp:directive' after 4.57 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/user/awesome-thing-directive.js`:
+Produces `src/app/component/user/awesome-thing-directive.js`:
 ```javascript
 
 /**
@@ -349,7 +355,7 @@ Produces `src/app/user/awesome-thing-directive.js`:
  */
 (function() {
     angular
-        .module('myAngular.user')
+        .module('myAngularApp.user')
         .directive('awesomeThing', awesomeThing );
 
     function awesomeThing () {
@@ -359,10 +365,11 @@ Produces `src/app/user/awesome-thing-directive.js`:
 })();
 
 
+
 ```
 
 ### Filter
-Generates a filter in `src/app/<module>`.
+Generates a filter in `src/app/components/<module>`.
 
 Syntax:
 
@@ -377,38 +384,44 @@ slush angular-gulp:filter checkmark
 ```
 
 ```log
-[08:35:16] Starting 'angular-gulp:filter'...
+[06:39:02] Starting 'angular-gulp:filter'...
 ? What is the name of your filter? checkmark
-? What is your AngularJS module name? home
+? What is your AngularJS module name? user
 ? Do you want to include unit testing? Yes
-[08:35:32] [conflict] Creating checkmark-filter.spec.js
-[08:35:32] [conflict] Creating checkmark-filter.js
-[08:35:32] Finished 'angular-gulp:filter' after 15 s
+[06:39:11] [conflict] Creating checkmark-filter.js
+[06:39:11] [conflict] Creating checkmark-filter.spec.js
+[06:39:11] Finished 'angular-gulp:filter' after 9.3 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/home/checkmark-filter.js`:
+Produces `src/app/component/user/checkmark-filter.js`:
 ```javascript
 (function() {
     'use strict';
 
-    angular.module('myAngular.home').filter('checkmark', function() {
-        return function(input) {
+    angular
+        .module('myAngularApp.user').filter('checkmark', checkmarkFilter);
+    ////////////////////
+
+    function checkmark() {
+        return function (input) {
             return input ? '\u2713' : '\u2718';
-        };
-    });
+    };
+}
 })();
+
 ```
 
 and 
 
-Produces `src/app/home/checkmark-filter.spec.js`:
+Produces `src/app/component/user/checkmark-filter.spec.js`:
 ```javascript
+
 'use strict';
 
 describe('filter', function() {
 
-  beforeEach(module('myAngular.home'));
+  beforeEach(module('myAngularApp.user'));
 
   describe('checkmark', function() {
 
@@ -425,7 +438,7 @@ describe('filter', function() {
 
 
 ### Route
-Generates a route in `src/app/<module>`.
+Generates a route in `src/app/components/<module>`.
 
 Syntax:
 
@@ -440,22 +453,21 @@ slush angular-gulp:route user
 ```
 
 ```log
-[09:55:24] Starting 'angular-gulp:route'...
+[06:41:04] Starting 'angular-gulp:route'...
 ? What is the name of your route? user
 ? What is your AngularJS module name? user
-? Replace user-route.js? replace
-[09:55:34] [conflict] Overwriting user-route.js
-[09:55:34] Finished 'angular-gulp:route' after 9.49 s
+[06:41:07] [conflict] Creating user-route.js
+[06:41:07] Finished 'angular-gulp:route' after 2.96 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/home/user-route.js`:
+Produces `src/app/component/user/user-route.js`:
 ```javascript
 (function() {
     'use strict';
 
     angular
-        .module('myAngular.user')
+        .module('myAngularApp.user')
         .config( userRoute);
 
 
@@ -472,7 +484,7 @@ Produces `src/app/home/user-route.js`:
 })();
 ```
 ### Service
-Generates a service in `src/app/<module>`.
+Generates a service in `src/app/components/<module>`.
 
 Syntax:
 
@@ -487,21 +499,21 @@ slush angular-gulp:service session
 ```
 
 ```log
-[13:28:05] Starting 'angular-gulp:service'...
+[06:43:42] Starting 'angular-gulp:service'...
 ? What is the name of your service? session
-? What is your AngularJS module name? home
-[13:28:13] [conflict] Creating session-service.js
-[13:28:13] Finished 'angular-gulp:service' after 8.21 s
+? What is your AngularJS module name? user
+[06:43:48] [conflict] Creating session-service.js
+[06:43:48] Finished 'angular-gulp:service' after 5.58 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/home/session-service.js`:
+Produces `src/app/user/session-service.js`:
 ```javascript
 (function() {
     'use strict';
 
     angular
-        .module('myAngular.home')
+        .module('myAngularApp.user')
         .service('sessionService',  sessionService);
 
 
@@ -519,11 +531,11 @@ Produces `src/app/home/session-service.js`:
 
         function save() {
             /* */
-        };
+        }
 
         function validate() {
             /* */
-        };
+        }
     }
 
 })();
@@ -531,7 +543,7 @@ Produces `src/app/home/session-service.js`:
 ```
 
 ### Factory
-Generates a factory in `src/app/<module>`.
+Generates a factory in `src/app/components/<module>`.
 
 Syntax:
 
@@ -546,11 +558,11 @@ slush angular-gulp:factory session
 ```
 
 ```log
-[13:28:05] Starting 'angular-gulp:factory'...
+[06:46:32] Starting 'angular-gulp:factory'...
 ? What is the name of your factory? session
-? What is your AngularJS module name? home
-[13:28:13] [conflict] Creating session-factory.js
-[13:28:13] Finished 'angular-gulp:factory' after 8.21 s
+? What is your AngularJS module name? user
+[06:46:38] [conflict] Creating session-factory.js
+[06:46:38] Finished 'angular-gulp:factory' after 6.07 s
 [slush] Scaffolding done
 ```
 
@@ -560,7 +572,7 @@ Produces `src/app/home/session-factory.js`:
     'use strict';
 
     angular
-        .module('myAngular.home')
+        .module('myAngularApp.user')
         .factory('sessionFactory',  sessionFactory);
 
 
@@ -587,10 +599,11 @@ Produces `src/app/home/session-factory.js`:
 
 })();
 
+
 ```
 
 ### Provider
-Generates a provider in `src/app/<module>`.
+Generates a provider in `src/app/components/<module>`.
 
 Syntax:
 
@@ -648,7 +661,7 @@ angular
 ```
 
 ### Constant
-Generates a constant in `src/app/<module>`.
+Generates a constant in `src/app/components/<module>`.
 
 Syntax:
 
@@ -663,23 +676,23 @@ slush angular-gulp:constant apiKey
 ```
 
 ```log
-[14:59:07] Starting 'angular-gulp:constant'...
-? What is the name of your constant? appKey
-? What is your AngularJS module name? customer
-[14:59:13] [conflict] Creating appKey-constant.js
-[14:59:13] Finished 'angular-gulp:constant' after 5.56 s
+[06:47:37] Starting 'angular-gulp:constant'...
+? What is the name of your constant? apiKey
+? What is your AngularJS module name? user
+[06:47:44] [conflict] Creating apiKey-constant.js
+[06:47:44] Finished 'angular-gulp:constant' after 7.11 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/customer/appKey-constant.js`:
+Produces `src/app/component/user/appKey-constant.js`:
 
 ```javascript
 (function() {
     'use strict';
 
     angular
-        .module('myAngular.customer')
-        .constant('appKey',  'appKey');
+        .module('myAngularApp.user')
+        .constant('apiKey',  'apiKey');
 
 
 })();
@@ -687,7 +700,7 @@ Produces `src/app/customer/appKey-constant.js`:
 
 ```
 ### Value
-Generates a value in `src/app/<module>`.
+Generates a value in `src/app/components/<module>`.
 
 Syntax:
 
@@ -698,38 +711,37 @@ slush angular-gulp:value <value-Name>
 Example:
 
 ```bash
-slush angular-gulp:value api_key
+slush angular-gulp:value baseUrl
 ```
 
 ```log
-[14:43:35] Starting 'angular-gulp:value'...
-? What is the name of your value? api_key
-? What is your AngularJS module name? heat
-[14:43:43] [conflict] Creating api_key-value.js
-[14:43:43] Finished 'angular-gulp:value' after 7.41 s
+[06:49:57] Starting 'angular-gulp:value'...
+? What is the name of your value? baseUrl
+? What is your AngularJS module name? user
+[06:50:01] [conflict] Creating baseUrl-value.js
+[06:50:01] Finished 'angular-gulp:value' after 3.64 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/heat/api_key-value.js`:
+Produces `src/app/component/user/baseUrl-value.js`:
 
 ```javascript
 (function() {
     'use strict';
 
-    var apiKeyValue = {};
+    var baseUrlValue = {};
 
     angular
-        .module('myAngular.heat')
-        .value('apiKey',  apiKeyValue);
+        .module('myAngularApp.user')
+        .value('baseUrl',  baseUrlValue);
 
 
 })();
 
-
 ```
 
 ### Decorator
-Generates a decorator in `src/app/<module>`.
+Generates a decorator in `src/app/components/<module>`.
 
 Syntax:
 
@@ -744,15 +756,15 @@ slush angular-gulp:decorator exception
 ```
 
 ```log
-[15:12:54] Starting 'angular-gulp:decorator'...
+[06:52:06] Starting 'angular-gulp:decorator'...
 ? What is the name of your decorator? exception
-? What is your AngularJS module name? customer
-[15:13:08] [conflict] Creating exception-decorator.js
-[15:13:08] Finished 'angular-gulp:decorator' after 14 s
+? What is your AngularJS module name? user
+[06:52:11] [conflict] Creating exception-decorator.js
+[06:52:11] Finished 'angular-gulp:decorator' after 4.52 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/customer/exception-decorator.js`:
+Produces `src/app/component/user/exception-decorator.js`:
 
 ```javascript
 
@@ -760,23 +772,23 @@ Produces `src/app/customer/exception-decorator.js`:
     'use strict'
 
     angular
-        .module('myAngular.customer')
-    .config(exceptionConfig);
+        .module('myAngularApp.user')
+        .config(exceptionConfig);
 
-/* @ngInject */
-function exceptionConfig($provide) {
-    $provide.decorator('$exceptionHandler', extendexceptionHandler);
-}
+    /* @ngInject */
+    function exceptionConfig($provide) {
+        $provide.decorator('$exceptionHandler', extendexceptionHandler);
+    }
 
-/* @ngInject */
-function extendexceptionHandler($delegate) {
-    return function(exception, cause) {
-        $delegate(exception, cause);
-        var data = {
-            exception: exception
+    /* @ngInject */
+    function extendexceptionHandler($delegate) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            var data = {
+                exception: exception
+            };
         };
-    };
-}
+    }
 
 })();
 
@@ -784,7 +796,7 @@ function extendexceptionHandler($delegate) {
 ```
 
 ### View
-Generates a view in `src/app/<module>`.
+Generates a view in `src/app/components/<module>`.
 
 Syntax:
 
@@ -799,18 +811,18 @@ slush angular-gulp:view user
 ```
 
 ```log
-[15:25:00] Starting 'angular-gulp:view'...
+[06:54:05] Starting 'angular-gulp:view'...
 ? What is the name of your view? user
 ? What is your AngularJS module name? user
-[15:25:27] [conflict] Creating user-view.html
-[15:25:27] Finished 'angular-gulp:view' after 27 s
+[06:54:17] [conflict] Creating user-view.html
+[06:54:17] Finished 'angular-gulp:view' after 12 s
 [slush] Scaffolding done
 ```
 
-Produces `src/app/user/user-view.html`:
+Produces `src/app/component/user/user-view.html`:
 
 ```html
-<p>This is the user' view</p>
+<p>This is the user view</p>
 ```
 
 
@@ -858,7 +870,7 @@ Now you have a `./dist` folder with all your scripts and stylesheets concatenate
 
 ## Contributing guideline
 
-The Contributing guideline can be found here [Contributing](docs/contributing.md).
+The Contributing guideline can be found here [Contributing](https://github.com/reflexdemon/slush-angular-gulp/blob/master/docs/contributing.md).
 
 ## Changelog
 
@@ -866,4 +878,4 @@ The Changelog can be found on the [releases section](https://github.com/reflexde
 
 ## License
 
-[MIT](/LICENSE)
+[MIT](https://github.com/reflexdemon/slush-angular-gulp/blob/master/LICENSE)
