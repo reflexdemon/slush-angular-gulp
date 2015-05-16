@@ -70,8 +70,8 @@
                     var files = [__dirname + '/../templates/app/**'];
                     var exclude = _.xor(examples, answers.example);
                     _.each(exclude, function(choice) {
-                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice + '/**');
-                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice);
+                        files.push('!' + __dirname + '/../templates/app/src/app/components/' + choice + '/**');
+                        files.push('!' + __dirname + '/../templates/app/src/app/components/' + choice);
                     });
                     /*
                     { name: 'my-angular-app',
@@ -91,7 +91,7 @@
                         answers.exampleSettings[item] = item;
                     });
                     answers.styleData = util.cssTypeData[answers.csstype];
-                    console.log("ANSWERS:", answers);
+                    // console.log("ANSWERS:", answers);
                     return gulp.src(files)
                         .pipe(template(answers))
                         .pipe(rename(function(file) {
