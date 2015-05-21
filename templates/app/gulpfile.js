@@ -78,7 +78,17 @@ gulp.task('clean-css', function (done) {
   rimraf('./.tmp/css', done);
 });
 
-gulp.task('styles', ['clean-css'], function () {
+gulp.task('fonts', function () {
+  return gulp.src([
+    './bower_components/**/*.eot',
+    './bower_components/**/*.svg',
+    './bower_components/**/*.ttf',
+    './bower_components/**/*.woff',
+    './bower_components/**/*.woff2'
+  ]).pipe(gulp.dest('./.tmp/fonts/'));
+});
+
+gulp.task('styles', ['clean-css', 'fonts'], function () {
   return gulp.src([
     './src/app/**/*.<%= styleData.extension %>',
     '!./src/app/**/_*.<%= styleData.extension %>'
