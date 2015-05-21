@@ -75,7 +75,11 @@ gulp.task('jshint', function () {
  * CSS
  */
 gulp.task('clean-css', function (done) {
-  rimraf('./.tmp/css', done);
+  rimraf([
+      './.tmp/css',
+      './.tmp/fonts'
+      ], 
+      done);
 });
 
 gulp.task('fonts', function () {
