@@ -81,11 +81,9 @@ gulp.task('clean-css', function (done) {
 
 gulp.task('fonts', function () {
   return gulp.src([
-    './bower_components/**/*.eot',
-    './bower_components/**/*.svg',
-    './bower_components/**/*.ttf',
-    './bower_components/**/*.woff',
-    './bower_components/**/*.woff2'
+    './bower_components/bootstrap/fonts/**/*',
+    './bower_components/bootstrap-sass/assets/fonts/**/*',
+    './bower_components/fontawesome/fonts/**/*'
   ]).pipe(gulp.dest('./.tmp/fonts/'));
 });
 
