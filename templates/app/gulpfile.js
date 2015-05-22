@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     bower = require('./bower'),
     connect = require('gulp-connect'),
+    flatten = require('gulp-flatten'),
     <%if(middleware){%>
     proxy = require('proxy-middleware'),
     url = require('url'),
@@ -157,6 +158,10 @@ function index () {
 gulp.task('assets', function () {
   return gulp.src('./src/app/assets/**')
     .pipe(gulp.dest('./dist/assets'));
+});
+
+gulp.task('bower-assets-dist', function() {
+    return distBowerAssets();
 });
 
 /**
@@ -335,6 +340,19 @@ function appFiles () {
 function templateFiles (opt) {
   return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
     .pipe(opt && opt.min ? g.htmlmin(configuration.htmlminOpts) : noop());
+}
+
+function distBowerAssets() {
+    gulp.src(configuration.distBowerFileList)
+        .pipe(flatten())
+        .pipe(gulp.dest('./dist/assets', {
+            base: '*'
+        }));
+    return gulp.src(configuration.distBowerFontsFiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./dist/fonts', {
+            base: '*'
+        }));
 }
 
 /**
