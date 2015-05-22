@@ -75,10 +75,19 @@ gulp.task('jshint', function () {
  * CSS
  */
 gulp.task('clean-css', function (done) {
-  rimraf('./.tmp/css', done);
+  rimraf('./.tmp/css', function() {});
+  rimraf('./.tmp/fonts', done);
 });
 
-gulp.task('styles', ['clean-css'], function () {
+gulp.task('fonts', function () {
+  return gulp.src([
+    './bower_components/bootstrap/fonts/**/*',
+    './bower_components/bootstrap-sass/assets/fonts/**/*',
+    './bower_components/fontawesome/fonts/**/*'
+  ]).pipe(gulp.dest('./.tmp/fonts/'));
+});
+
+gulp.task('styles', ['clean-css', 'fonts'], function () {
   return gulp.src([
     './src/app/**/*.<%= styleData.extension %>',
     '!./src/app/**/_*.<%= styleData.extension %>'
