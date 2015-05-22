@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     bower = require('./bower'),
     connect = require('gulp-connect'),
+    flatten = require('gulp-flatten'),
     <%if(middleware){%>
     proxy = require('proxy-middleware'),
     url = require('url'),
@@ -168,6 +169,10 @@ gulp.task('assets', function () {
     .pipe(gulp.dest('./dist/assets'));
 });
 
+gulp.task('bower-assets-dist', function() {
+    return distBowerAssets();
+});
+
 /**
  * Dist
  */
@@ -182,6 +187,13 @@ gulp.task('dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist', 'bower-as
         }))
         .pipe(g.htmlmin(configuration.htmlminOpts))
         .pipe(gulp.dest('./dist/'));
+});
+
+/**
+ * Clean dist
+ * */
+gulp.task('clean-dist', function(done) {
+    rimraf('./dist', done);
 });
 
 <%if(middleware){%>
@@ -344,6 +356,19 @@ function appFiles () {
 function templateFiles (opt) {
   return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
     .pipe(opt && opt.min ? g.htmlmin(configuration.htmlminOpts) : noop());
+}
+
+function distBowerAssets() {
+    gulp.src(configuration.distBowerFileList)
+        .pipe(flatten())
+        .pipe(gulp.dest('./dist/assets', {
+            base: '*'
+        }));
+    return gulp.src(configuration.distBowerFontsFiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./dist/fonts', {
+            base: '*'
+        }));
 }
 
 /**
