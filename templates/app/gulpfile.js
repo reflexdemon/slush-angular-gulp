@@ -180,6 +180,13 @@ gulp.task('dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist', 'bower-as
         .pipe(gulp.dest('./dist/'));
 });
 
+/**
+ * Clean dist
+ * */
+gulp.task('clean-dist', function(done) {
+    rimraf('./dist', done);
+});
+
 <%if(middleware){%>
 /**
  * Static file server
