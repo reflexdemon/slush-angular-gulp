@@ -114,7 +114,11 @@ gulp.task('templates', function () {
 });
 
 gulp.task('templates-dist', function () {
-  return templateFiles({min: true}).pipe(buildTemplates());
+  return gulp.src([
+    './src/app/**/*.html',
+    '!./src/app/index.html'
+  ])
+    .pipe(gulp.dest('./dist'));
 });
 
 /**
