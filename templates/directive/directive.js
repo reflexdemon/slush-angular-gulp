@@ -1,14 +1,33 @@
-/**
- * @desc Please provide useful information regarding the directive with a proper example
- * @example <div <%= classedNameDashed %>></div>
- */
 (function() {
+    'use strict';
+
     angular
         .module('<%= scriptAppName %>')
-        .directive('<%= classedName %>', <%= classedName %> );
+        .directive('<%= classedName %>', <%= classedName %>);
 
+    /* @ngInject */
     function <%= classedName %> () {
-        /* implementation details */
+        // Usage:
+        //
+        // Creates:
+        //
+        var directive = {
+            bindToController: true,
+            controller: Controller,
+            controllerAs: 'vm',
+            link: link,
+            restrict: 'A',
+            scope: {
+            }
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+        }
     }
 
+    /* @ngInject */
+    function Controller () {
+
+    }
 })();

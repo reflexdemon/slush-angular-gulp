@@ -2,12 +2,14 @@
     'use strict';
 
     angular
-        .module('<%= scriptAppName %>').filter('<%= classedName %>', <%= classedName %>Filter);
-    ////////////////////
+        .module('<%= scriptAppName %>').filter('<%= classedName %>', <%= classedName %>);
 
     function <%= classedName %>() {
-        return function (input) {
+        return <%= classedName %>Filter;
+    }
+
+    ///////////////////
+    function <%= classedName %>Filter(input) {
             return input ? '\u2713' : '\u2718';
-    };
-}
+    }
 })();
