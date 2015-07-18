@@ -51,11 +51,24 @@ module.exports.getDefaultOption = function(args, index) {
     }
 };
 
+var runtimeMode ='LIVE';//Other option is 'TEST'
+module.exports.setRuntimeMode = function(mode) {
+    runtimeMode = mode;
+};
+
+module.exports.getRuntimeMode = function() {
+    return runtimeMode;
+};
+
+
 /**
  * Get Modules proposal
  * @return {list} dir
  */
 module.exports.getModuleProposal = function(appDir) {
+    if (runtimeMode === 'TEST') {
+      return ['module1', 'module2'];
+    }
     var modules = [];
     var componentsDir = appDir + '/components';
     var fs = require('fs');

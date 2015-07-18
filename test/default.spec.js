@@ -7,7 +7,9 @@
 (function() {
     'use strict';
     var gulp = require('gulp'),
-        testingUtil = require('./testing_util.js'),
+        testingUtil = require('./testing_util'),
+        util = require('../util'),
+        _ = require('lodash'),
         mockGulpDest = require('mock-gulp-dest')(gulp);
 
     var assert = require('assertthat');
@@ -189,7 +191,29 @@
                 });
             });
         });
+        /////////////
+        describe('constant generator', function () {
+          beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName : 'myconstant'
+                });
+                util.setRuntimeMode('TEST');
+            });
+          it('should put the constant file in the correct directory', function(done) {
+                gulp.start('constant').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+          it('should put the correct constant filename', function(done) {
+                gulp.start('constant').once('stop', function() {
+                    mockGulpDest.assertDestContains('myconstant-constant.js')
+                    done();
+                });
+            });
 
+        });
     });
 
 })();
