@@ -7,7 +7,9 @@
 (function() {
     'use strict';
     var gulp = require('gulp'),
-        testingUtil = require('./testing_util.js'),
+        testingUtil = require('./testing_util'),
+        util = require('../util'),
+        _ = require('lodash'),
         mockGulpDest = require('mock-gulp-dest')(gulp);
 
     var assert = require('assertthat');
@@ -189,7 +191,319 @@
                 });
             });
         });
+        ///////////// Constants ////////////
+        describe('constant generator', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myconstant'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the constant file in the correct directory', function(done) {
+                gulp.start('constant').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct constant filename', function(done) {
+                gulp.start('constant').once('stop', function() {
+                    mockGulpDest.assertDestContains('myconstant-constant.js')
+                    done();
+                });
+            });
 
+        });
+        ///////////// Controllers ////////////
+        describe('controller generator with test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mycontroller',
+                    test : true
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the controller file in the correct directory', function(done) {
+                gulp.start('controller').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct controller filename', function(done) {
+                gulp.start('controller').once('stop', function() {
+                    mockGulpDest.assertDestContains('mycontroller-controller.js');
+                    mockGulpDest.assertDestContains('mycontroller-controller.spec.js');
+                    done();
+                });
+            });
+
+        }); // With test controller
+        describe('controller generator without test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mycontroller',
+                    test : false
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the controller file in the correct directory', function(done) {
+                gulp.start('controller').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct controller filename', function(done) {
+                gulp.start('controller').once('stop', function() {
+                    mockGulpDest.assertDestContains('mycontroller-controller.js');
+                    done();
+                });
+            });
+
+        }); // With out test controller
+        describe('decorator generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mydecorator'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the decorator file in the correct directory', function(done) {
+                gulp.start('decorator').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct decorator filename', function(done) {
+                gulp.start('decorator').once('stop', function() {
+                    mockGulpDest.assertDestContains('mydecorator-decorator.js');
+                    done();
+                });
+            });
+
+        }); // decorator test
+        describe('directive generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mydirective'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the directive file in the correct directory', function(done) {
+                gulp.start('directive').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct directive filename', function(done) {
+                gulp.start('directive').once('stop', function() {
+                    mockGulpDest.assertDestContains('mydirective-directive.js');
+                    done();
+                });
+            });
+
+        }); // directive test
+        describe('factory generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myfactory'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the factory file in the correct directory', function(done) {
+                gulp.start('factory').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct factory filename', function(done) {
+                gulp.start('factory').once('stop', function() {
+                    mockGulpDest.assertDestContains('myfactory-factory.js');
+                    done();
+                });
+            });
+
+        }); // factory test
+        describe('filter generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myfilter'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the filter file in the correct directory', function(done) {
+                gulp.start('filter').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct filter filename', function(done) {
+                gulp.start('filter').once('stop', function() {
+                    mockGulpDest.assertDestContains('myfilter-filter.js');
+                    done();
+                });
+            });
+
+        }); // filter test
+        describe('module - config generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'mymodule',
+                    config: 'config'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the module file in the correct directory', function(done) {
+                gulp.start('module').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/mymodule');
+                    done();
+                });
+            });
+            it('should put the correct module filename', function(done) {
+                gulp.start('module').once('stop', function() {
+                    mockGulpDest.assertDestContains('mymodule-config.js');
+                    done();
+                });
+            });
+
+        }); // module test
+        describe('module - routes generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'mymodule',
+                    config: 'routes'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the module file in the correct directory', function(done) {
+                gulp.start('module').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/mymodule');
+                    done();
+                });
+            });
+            it('should put the correct module filename', function(done) {
+                gulp.start('module').once('stop', function() {
+                    mockGulpDest.assertDestContains('mymodule-routes.js');
+                    done();
+                });
+            });
+
+        }); // module test
+        describe('provider generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myprovider'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the provider file in the correct directory', function(done) {
+                gulp.start('provider').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct provider filename', function(done) {
+                gulp.start('provider').once('stop', function() {
+                    mockGulpDest.assertDestContains('myprovider-provider.js');
+                    done();
+                });
+            });
+
+        }); // provider test
+        describe('route generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myroute'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the route file in the correct directory', function(done) {
+                gulp.start('route').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct route filename', function(done) {
+                gulp.start('route').once('stop', function() {
+                    mockGulpDest.assertDestContains('myroute-route.js');
+                    done();
+                });
+            });
+
+        }); // route test
+        describe('service generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myservice'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the service file in the correct directory', function(done) {
+                gulp.start('service').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct service filename', function(done) {
+                gulp.start('service').once('stop', function() {
+                    mockGulpDest.assertDestContains('myservice-service.js');
+                    done();
+                });
+            });
+
+        }); // service test
+        describe('value generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myvalue'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the value file in the correct directory', function(done) {
+                gulp.start('value').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct value filename', function(done) {
+                gulp.start('value').once('stop', function() {
+                    mockGulpDest.assertDestContains('myvalue-value.js');
+                    done();
+                });
+            });
+
+        }); // value test
+        describe('view generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myview'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the view file in the correct directory', function(done) {
+                gulp.start('view').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct view filename', function(done) {
+                gulp.start('view').once('stop', function() {
+                    mockGulpDest.assertDestContains('myview-view.html');
+                    done();
+                });
+            });
+
+        }); // view test
     });
 
 })();
