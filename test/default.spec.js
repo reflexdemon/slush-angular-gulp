@@ -394,6 +394,28 @@
             });
 
         }); // module test
+        describe('provider generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myprovider'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the provider file in the correct directory', function(done) {
+                gulp.start('provider').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct provider filename', function(done) {
+                gulp.start('provider').once('stop', function() {
+                    mockGulpDest.assertDestContains('myprovider-provider.js');
+                    done();
+                });
+            });
+
+        }); // provider test
     });
 
 })();
