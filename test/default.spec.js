@@ -328,6 +328,28 @@
             });
 
         }); // factory test
+        describe('filter generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myfilter'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the filter file in the correct directory', function(done) {
+                gulp.start('filter').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct filter filename', function(done) {
+                gulp.start('filter').once('stop', function() {
+                    mockGulpDest.assertDestContains('myfilter-filter.js');
+                    done();
+                });
+            });
+
+        }); // filter test
     });
 
 })();
