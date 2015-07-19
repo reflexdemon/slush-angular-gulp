@@ -262,6 +262,29 @@
             });
 
         }); // With out test controller
+        describe('decorator generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mydecorator',
+                    test : false
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the decorator file in the correct directory', function(done) {
+                gulp.start('decorator').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct decorator filename', function(done) {
+                gulp.start('decorator').once('stop', function() {
+                    mockGulpDest.assertDestContains('mydecorator-decorator.js');
+                    done();
+                });
+            });
+
+        }); // decorator test
     });
 
 })();
