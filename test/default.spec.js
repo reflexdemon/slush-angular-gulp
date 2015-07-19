@@ -438,6 +438,28 @@
             });
 
         }); // route test
+        describe('service generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myservice'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the service file in the correct directory', function(done) {
+                gulp.start('service').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct service filename', function(done) {
+                gulp.start('service').once('stop', function() {
+                    mockGulpDest.assertDestContains('myservice-service.js');
+                    done();
+                });
+            });
+
+        }); // service test
     });
 
 })();
