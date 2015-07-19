@@ -460,6 +460,28 @@
             });
 
         }); // service test
+        describe('value generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myvalue'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the value file in the correct directory', function(done) {
+                gulp.start('value').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct value filename', function(done) {
+                gulp.start('value').once('stop', function() {
+                    mockGulpDest.assertDestContains('myvalue-value.js');
+                    done();
+                });
+            });
+
+        }); // value test
     });
 
 })();
