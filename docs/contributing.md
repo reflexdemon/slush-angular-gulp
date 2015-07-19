@@ -11,6 +11,7 @@ Prerequisites:
 
 - familiarity with [GitHub PRs](https://help.github.com/articles/using-pull-requests) (pull requests) and issues
 - knowledge of Markdown for editing `.md` documents
+- Ensure the `nps test` shows all pass.
 
 In particular, this community seeks the following types of contributions:
 
