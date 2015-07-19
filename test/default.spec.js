@@ -350,6 +350,28 @@
             });
 
         }); // filter test
+        describe('module - config generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'mymodule',
+                    config: 'config'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the module file in the correct directory', function(done) {
+                gulp.start('module').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/mymodule');
+                    done();
+                });
+            });
+            it('should put the correct module filename', function(done) {
+                gulp.start('module').once('stop', function() {
+                    mockGulpDest.assertDestContains('mymodule-config.js');
+                    done();
+                });
+            });
+
+        }); // module test
     });
 
 })();
