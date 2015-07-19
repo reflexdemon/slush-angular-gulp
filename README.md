@@ -1,4 +1,4 @@
-#slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)  
+#slush-angular-gulp [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp) [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp) [![Build Status](https://secure.travis-ci.org/reflexdemon/slush-angular-gulp.png)](http://travis-ci.org/reflexdemon/slush-angular-gulp)
 
 ---
 
