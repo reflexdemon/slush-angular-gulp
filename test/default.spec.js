@@ -372,6 +372,28 @@
             });
 
         }); // module test
+        describe('module - routes generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'mymodule',
+                    config: 'routes'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the module file in the correct directory', function(done) {
+                gulp.start('module').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/mymodule');
+                    done();
+                });
+            });
+            it('should put the correct module filename', function(done) {
+                gulp.start('module').once('stop', function() {
+                    mockGulpDest.assertDestContains('mymodule-routes.js');
+                    done();
+                });
+            });
+
+        }); // module test
     });
 
 })();
