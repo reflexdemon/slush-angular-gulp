@@ -482,6 +482,28 @@
             });
 
         }); // value test
+        describe('view generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myview'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the view file in the correct directory', function(done) {
+                gulp.start('view').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct view filename', function(done) {
+                gulp.start('view').once('stop', function() {
+                    mockGulpDest.assertDestContains('myview-view.html');
+                    done();
+                });
+            });
+
+        }); // view test
     });
 
 })();
