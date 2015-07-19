@@ -266,8 +266,7 @@
             beforeEach(function() {
                 testingUtil.mockPrompt({
                     module: 'module1',
-                    fileName: 'mydecorator',
-                    test : false
+                    fileName: 'mydecorator'
                 });
                 util.setRuntimeMode('TEST');
             });
@@ -285,6 +284,28 @@
             });
 
         }); // decorator test
+        describe('directive generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'mydirective'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the directive file in the correct directory', function(done) {
+                gulp.start('directive').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct directive filename', function(done) {
+                gulp.start('directive').once('stop', function() {
+                    mockGulpDest.assertDestContains('mydirective-directive.js');
+                    done();
+                });
+            });
+
+        }); // directive test
     });
 
 })();
