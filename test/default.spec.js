@@ -306,6 +306,28 @@
             });
 
         }); // directive test
+        describe('factory generator test', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'myfactory'
+                });
+                util.setRuntimeMode('TEST');
+            });
+            it('should put the factory file in the correct directory', function(done) {
+                gulp.start('factory').once('stop', function() {
+                    assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+                    done();
+                });
+            });
+            it('should put the correct factory filename', function(done) {
+                gulp.start('factory').once('stop', function() {
+                    mockGulpDest.assertDestContains('myfactory-factory.js');
+                    done();
+                });
+            });
+
+        }); // factory test
     });
 
 })();
