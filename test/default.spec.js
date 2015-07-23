@@ -19,7 +19,7 @@
 
     var assert = require('assertthat');
 
-    require('../slushfile-cov');
+    require('../slushfile');
     describe('slush-angular-gulp', function() {
         before(function() {
             process.chdir(__dirname);
