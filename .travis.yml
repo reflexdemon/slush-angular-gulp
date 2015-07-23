@@ -1,8 +1,16 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
-
+- '0.12'
+- '0.11'
+- '0.10'
 after_success:
 - mocha -R travis-cov test/default.spec.js
+- mocha test/default.spec.js -R html-cov > coverage.html
+
+notifications:
+  email:
+    recipients:
+      - USER_EMAIL
+    on_success: always # default: change others:never|change
+    on_failure: always # default: always others:never|change
+
