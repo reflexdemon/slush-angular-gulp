@@ -1,73 +1,70 @@
 {
-  "name": "slush-angular-gulp",
-  "version": "0.3.3",
-  "description": "Gulp, Angular, Less with Web server, this generator is build with inspiration from the below projects. slush-angular, angular-styleguide and generator-angular",
-  "main": "slushfile.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reflexdemon/slush-angular-gulp"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test mocha -R spec test/*.spec.js"
-  },
-  "config": {
-    "travis-cov": {
-      "threshold": 90
+    "name": "slush-angular-gulp",
+    "version": "0.3.3",
+    "description": "Gulp, Angular, Less with Web server, this generator is build with inspiration from the below projects. slush-angular, angular-styleguide and generator-angular",
+    "main": "slushfile.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/reflexdemon/slush-angular-gulp"
+    },
+    "config": {
+        "travis-cov": {
+            "threshold": 70
+        }
+    },
+    "scripts": {
+        "test": "NODE_ENV=test mocha -R spec test/*.spec.js"
+    },
+    "keywords": [
+        "slushgenerator",
+        "angular",
+        "angularjs",
+        "google",
+        "gulp",
+        "gulpfile",
+        "less",
+        "saas",
+        "stylus",
+        "moca",
+        "bootstrap",
+        "bower",
+        "webserver",
+        "livereload",
+        "middleware",
+        "fontawesome",
+        "modular"
+    ],
+    "author": "Venkateswara Venkatraman Prasanna",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/reflexdemon/slush-angular-gulp/issues"
+    },
+    "homepage": "https://github.com/reflexdemon/slush-angular-gulp",
+    "dependencies": {
+        "fs": "0.0.2",
+        "gulp": "^3.8.11",
+        "gulp-conflict": "^0.3.0",
+        "gulp-install": "^0.2.0",
+        "gulp-load-tasks": "^0.8.3",
+        "gulp-rename": "^1.2.0",
+        "gulp-template": "^3.0.0",
+        "include-all": "^0.1.6",
+        "inquirer": "^0.8.2",
+        "lodash": "^3.6.0",
+        "path": "^0.11.14",
+        "underscore.string": "^3.0.3",
+        "yargs": "^3.7.2"
+    },
+    "devDependencies": {
+        "assertthat": "^0.6.0",
+        "blanket": "^1.1.7",
+        "chai": "*",
+        "gulp-bump": "^0.3.0",
+        "gulp-git": "^1.2.0",
+        "gulp-sequence": "^0.3.2",
+        "mocha": "*",
+        "mock-gulp-dest": "~0.1.0",
+        "semver": "^4.3.3",
+        "travis-cov": "^0.2.5"
     }
-  },
-  "keywords": [
-    "slushgenerator",
-    "angular",
-    "angularjs",
-    "google",
-    "gulp",
-    "gulpfile",
-    "less",
-    "saas",
-    "stylus",
-    "moca",
-    "bootstrap",
-    "bower",
-    "webserver",
-    "livereload",
-    "middleware",
-    "fontawesome",
-    "modular"
-  ],
-  "author": "Venkateswara Venkatraman Prasanna",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/reflexdemon/slush-angular-gulp/issues"
-  },
-  "homepage": "https://github.com/reflexdemon/slush-angular-gulp",
-  "dependencies": {
-    "fs": "0.0.2",
-    "gulp": "^3.8.11",
-    "gulp-conflict": "^0.3.0",
-    "gulp-install": "^0.2.0",
-    "gulp-load-tasks": "^0.8.3",
-    "gulp-rename": "^1.2.0",
-    "gulp-template": "^3.0.0",
-    "include-all": "^0.1.6",
-    "inquirer": "^0.8.2",
-    "lodash": "^3.6.0",
-    "path": "^0.11.14",
-    "underscore.string": "^3.0.3",
-    "yargs": "^3.7.2"
-  },
-  "devDependencies": {
-    "assertthat": "^0.6.0",
-    "blanket": "^1.1.7",
-    "chai": "*",
-    "coveralls": "^2.11.3",
-    "gulp-bump": "^0.3.0",
-    "gulp-git": "^1.2.0",
-    "gulp-sequence": "^0.3.2",
-    "mocha": "*",
-    "mocha-lcov-reporter": "0.0.2",
-    "mocha-multi": "^0.7.1",
-    "mock-gulp-dest": "~0.1.0",
-    "semver": "^4.3.3",
-    "travis-cov": "^0.2.5"
-  }
 }

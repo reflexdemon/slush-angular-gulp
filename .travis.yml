@@ -3,8 +3,6 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
-repo_token: 6vCg2xGuX7fTo0WGCqTCCJj0LXaUYozfE
 
 after_success:
-- ./node_modules/.bin/jscoverage slushfile.js slushfile-cov.js
-- ./node_modules/.bin/mocha test/default.spec.js -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
+- mocha -R spec test/*.spec.js

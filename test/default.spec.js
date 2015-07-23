@@ -6,11 +6,11 @@
 // mocha test/default.spec.js -R html-cov > coverage.html
 (function() {
     'use strict';
-    // require('blanket')({
-    //     pattern: function(filename) {
-    //         return !/node_modules/.test(filename);
-    //     }
-    // });
+    require('blanket')({
+        pattern: function(filename) {
+            return !/node_modules/.test(filename);
+        }
+    });
     var gulp = require('gulp'),
         testingUtil = require('./testing_util'),
         util = require('../util'),
