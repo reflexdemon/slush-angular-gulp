@@ -6,6 +6,11 @@
 
 (function() {
     'use strict';
+    require('blanket')({
+        pattern: function(filename) {
+            return !/node_modules/.test(filename);
+        }
+    });
     var gulp = require('gulp'),
         testingUtil = require('./testing_util'),
         util = require('../util'),
@@ -220,7 +225,7 @@
                 testingUtil.mockPrompt({
                     module: 'module1',
                     fileName: 'mycontroller',
-                    test : true
+                    test: true
                 });
                 util.setRuntimeMode('TEST');
             });
@@ -244,7 +249,7 @@
                 testingUtil.mockPrompt({
                     module: 'module1',
                     fileName: 'mycontroller',
-                    test : false
+                    test: false
                 });
                 util.setRuntimeMode('TEST');
             });
