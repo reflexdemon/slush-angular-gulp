@@ -5,4 +5,4 @@ node_js:
   - "0.10"
 
 after_success:
-- mocha -R spec test/*.spec.js
+- mocha -R travis-cov test/default.spec.js
