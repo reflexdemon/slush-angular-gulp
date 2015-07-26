@@ -61,6 +61,7 @@
     "chai": "*",
     "coveralls": "^2.11.3",
     "gulp-coverage": "^0.3.36",
+    "gulp-coveralls": "^0.1.4",
     "gulp-mocha": "^2.1.3",
     "gulp-strip-debug": "^1.0.2",
     "gulp-util": "^3.0.6",
