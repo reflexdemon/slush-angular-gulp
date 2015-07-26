@@ -1,86 +1,34 @@
-var bump = require('gulp-bump');
-var fs = require('fs');
-var git = require('gulp-git');
 var gulp = require('gulp');
-var semver = require('semver');
-var spawn = require('child_process').spawn;
-var argv = require('yargs').argv;
-var gulpSequence = require('gulp-sequence');
+var mocha = require('gulp-mocha');
+var stripDebug = require('gulp-strip-debug');
+var gutil = require('gulp-util');
+var cover = require('gulp-coverage');
 
-/**
- * Pulls the package json from fs
- */
-var getPackageJson = function() {
-    return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-};
+gutil.log = gutil.noop;
 
-var newVer;
-// one of  major, premajor, minor, preminor, patch, prepatch, or prerelease
-var incrementType = argv.type || 'patch';
-
-gulp.task('init', function() {
-    // increment version
-    var pkg = getPackageJson();
-    newVer = semver.inc(pkg.version, incrementType);
+gulp.task('test', function() {
+    gulp.src('test/default.spec.js')
+        .pipe(stripDebug())
+        .pipe(mocha({
+            reporter: 'html-cov',
+            clearRequireCache: true,
+            ignoreLeaks: true
+        }));
 });
 
-// Override the tab size for indenting
-// (or simply omit to keep the current formatting)
-gulp.task('bump', function() {
-    gulp.src('./package.json')
-        .pipe(bump({
-            version: newVer
+gulp.task('coverage', function() {
+    return gulp.src(['./slushfile.js', './tasks/*.js'], {
+            read: false
+        })
+        .pipe(cover.instrument({
+            pattern: ['./test/*.spec.js'],
+            debugDirectory: 'debug'
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(mocha({
+            reporter: 'html-cov',
+            ignoreLeaks: true
+        }))
+        .pipe(cover.gather())
+        .pipe(cover.format())
+        .pipe(gulp.dest('reports'));
 });
-
-// Run git add
-// src is the file(s) to add (or ./*)
-gulp.task('git-add', function() {
-    return gulp.src('./package.json')
-        .pipe(git.add());
-});
-
-// Run git commit
-// src are the files to commit (or ./*)
-gulp.task('git-commit', function() {
-    return gulp.src('./package.json')
-        .pipe(git.commit('Publishing ' + newVer));
-});
-
-// Tag the repo with a version
-gulp.task('git-tag', function(done) {
-    spawn('git', ['tag', 'v' + newVer, 'master'], {
-        stdio: 'inherit'
-    }).on('close', done);
-});
-
-/**
- * Publish the changes to npm repo
- */
-gulp.task('npm-publish', function(done) {
-    spawn('npm', ['publish'], {
-        stdio: 'inherit'
-    }).on('close', done);
-});
-
-// Run git push
-// remote is the remote repo
-// branch is the remote branch to push to
-gulp.task('git-push', function() {
-    git.push('origin', 'master', function(err) {
-        if (err) throw err;
-    });
-});
-
-// Run git push
-// remote is the remote repo
-// branch is the remote branch to push to
-gulp.task('git-push-tag', function(done) {
-    spawn('git', ['push', ' --tags'], {
-        stdio: 'inherit'
-    }).on('close', done);
-});
-
-gulp.task('publish', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag', 'git-push-tag', 'npm-publish'));
-gulp.task('bump', gulpSequence('init', 'bump', 'git-add', 'git-commit', 'git-push', 'git-tag'));

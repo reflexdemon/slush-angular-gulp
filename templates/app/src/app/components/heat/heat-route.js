@@ -12,7 +12,7 @@
         $routeProvider
             .when('/heat', {
                 controller: 'HeatCtrl',
-                templateUrl: '/components/view/heat.html',
+                templateUrl: '/components/heat/view/heat.html',
                 controllerAs: 'vm'
             });
     }
