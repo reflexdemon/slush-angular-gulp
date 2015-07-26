@@ -217,7 +217,6 @@
                     done();
                 });
             });
-
         });
         ///////////// Controllers ////////////
         describe('controller generator with test', function() {
@@ -509,6 +508,84 @@
             });
 
         }); // view test
+        describe('Negative case testing:', function() {
+            beforeEach(function() {
+                testingUtil.mockPrompt({
+                    module: 'module1',
+                    fileName: 'strangefilename',
+                    test : true
+                });
+                util.setRuntimeMode('LIVE');
+            });
+            it('test for error constant', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('constant', ['test']);
+                }).is.throwing();
+            });
+            it('test for error controller', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('controller');
+                }).is.throwing();
+            });
+            it('test for error service', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('service');
+                }).is.throwing();
+            });
+            it('test for error decorator', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('decorator');
+                }).is.throwing();
+            });
+            it('test for error directive', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('directive');
+                }).is.throwing();
+            });
+            it('test for error factory', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('factory');
+                }).is.throwing();
+            });
+            it('test for error filter', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('filter');
+                }).is.throwing();
+            });
+            it('test for error provider', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('provider');
+                }).is.throwing();
+            });
+            it('test for error route', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('route');
+                }).is.throwing();
+            });
+            it('test for error value', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('value');
+                }).is.throwing();
+            });
+            it('test for error view', function(done) {
+                assert.that(function() {
+                    done();
+                    gulp.start('view');
+                }).is.throwing();
+            });
+
+        }); // view negative
+
     });
 
 })();
