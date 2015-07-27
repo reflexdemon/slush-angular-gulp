@@ -4,5 +4,5 @@ node_js:
 - '0.11'
 - '0.10'
 after_success:
-  - npm run coverage
+# Publish the coverage to coveralls.io
   - npm run coveralls
