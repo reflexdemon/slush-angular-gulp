@@ -75,15 +75,15 @@
                         });
 
                 }
-                //Source
-                gulp.src(__dirname + '/../templates/controller/controller.js')
-                    .pipe(template(answers))
-                    .pipe(rename(answers.fileName + '-controller.js'))
-                    .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                    .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
-                    .on('finish', function() {
-                        done();
-                    });
+                // //Source
+                // gulp.src(__dirname + '/../templates/controller/controller.js')
+                //     .pipe(template(answers))
+                //     .pipe(rename(answers.fileName + '-controller.js'))
+                //     .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                //     .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                //     .on('finish', function() {
+                //         done();
+                //     });
             });
         });
     }

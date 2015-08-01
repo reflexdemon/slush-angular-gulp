@@ -21,6 +21,27 @@
     }, {
         description: 'Test controller generator with test',
         testcase: './cases/controller.test.spec'
+    }, {
+        description: 'Test controller generator without test',
+        testcase: './cases/controller.spec'
+    }, {
+        description: 'Test decorator generator',
+        testcase: './cases/decorator.spec'
+    }, {
+        description: 'Test directive generator',
+        testcase: './cases/directive.spec'
+    }, {
+        description: 'Test factory generator',
+        testcase: './cases/factory.spec'
+    }, {
+        description: 'Test filter generator',
+        testcase: './cases/filter.spec'
+    }, {
+        description: 'Test module with config generator',
+        testcase: './cases/module.config.spec'
+    }, {
+        description: 'Test module with route generator',
+        testcase: './cases/module.route.spec'
     }];
 
     require('blanket')({

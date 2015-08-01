@@ -14,7 +14,7 @@
         process.chdir(__dirname);
         testingUtil.mockPrompt({
                     module: 'module1',
-                    fileName: 'default',
+                    fileName: 'mycontroller',
                     spec: true
                 });
                 util.setRuntimeMode('TEST');
@@ -34,8 +34,8 @@
             // _.each(mockGulpDest.files(), function (item) {
             //   console.log('mockGulpDest', item);
             // });
-            mockGulpDest.assertDestContains('default-controller.js');
-            mockGulpDest.assertDestContains('default-controller.spec.js');
+            mockGulpDest.assertDestContains('mycontroller-controller.js');
+            mockGulpDest.assertDestContains('mycontroller-controller.spec.js');
             done();
         });
     });
