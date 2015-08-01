@@ -4,68 +4,87 @@
  */
 
 (function() {
-var gulp = require('gulp'),
-    install = require('gulp-install'),
-    conflict = require('gulp-conflict'),
-    template = require('gulp-template'),
-    rename = require('gulp-rename'),
-    inquirer = require('inquirer')
+    var gulp = require('gulp'),
+        install = require('gulp-install'),
+        conflict = require('gulp-conflict'),
+        template = require('gulp-template'),
+        rename = require('gulp-rename'),
+        inquirer = require('inquirer')
     _ = require('underscore.string');
 
-//Local dependencies
-var util = require('../util');
+    //Local dependencies
+    var util = require('../util');
 
-module.exports = function(gulp) {
-    'use strict';
+    module.exports = function(gulp) {
+        'use strict';
 
-    gulp.task('controller', function(done) {
-        var _this = this;
-        var name = util.getDefaultOption(_this.args, 0);
-        var options  = util.getGlobalOptions();
-        var modules = util.getModuleProposal(options.appDir);
+        gulp.task('controller', function(done) {
+            var _this = this;
+            var name = util.getDefaultOption(_this.args, 0);
+            var options = util.getGlobalOptions();
+            var modules = util.getModuleProposal(options.appDir);
 
-        if (modules.length === 0) {
-          throw new Error('Controller must be created in a module, but no modules exist. Create a module using "slush angular-gulp:module <module-Name>".');
-        }
-
-        inquirer.prompt([{
-            type: 'input',
-            name: 'fileName',
-            message: 'What is the name of your controller?',
-            default: name
-        }, {
-            type: 'list',
-            name: 'module',
-            message: 'What is your AngularJS module name?',
-            choices: modules
-        }, {
-            type: 'confirm',
-            name: 'test',
-            message: 'Do you want to include unit testing?',
-            default: true
-        }], function(answers) {
-            //Init
-            answers.nameDashed = _.slugify(util.getNameProposal());
-            answers.scriptAppName =  _.camelize(answers.nameDashed) + '.' +answers.module ;
-            answers.classedName = _.capitalize(_.camelize(answers.fileName));
-            // test
-            if (answers.test) {
-                gulp.src(__dirname + '/../templates/controller/controller.spec.js')
-                    .pipe(template(answers))
-                    .pipe(rename(answers.fileName + '-controller.spec.js'))
-                    .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                    .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+            if (modules.length === 0) {
+                throw new Error('Controller must be created in a module, but no modules exist. Create a module using "slush angular-gulp:module <module-Name>".');
             }
-            //Source
-            gulp.src(__dirname + '/../templates/controller/controller.js')
-                .pipe(template(answers))
-                .pipe(rename(answers.fileName + '-controller.js'))
-                .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
-                .on('finish', function() {
-                    done();
-                });
+
+            inquirer.prompt([{
+                type: 'input',
+                name: 'fileName',
+                message: 'What is the name of your controller?'
+            }, {
+                type: 'list',
+                name: 'module',
+                message: 'What is your AngularJS module name?',
+                choices: modules
+            }, {
+                type: 'confirm',
+                name: 'spec',
+                message: 'Do you want to include unit testing?',
+                default: true
+            }], function(answers) {
+                //Init
+                answers.nameDashed = _.slugify(util.getNameProposal());
+                answers.scriptAppName = _.camelize(answers.nameDashed) + '.' + answers.module;
+                answers.classedName = _.capitalize(_.camelize(answers.fileName));
+                // console.log('answers:', answers);
+                // test
+                if (answers.spec === true) {
+                    gulp.src(__dirname + '/../templates/controller/controller.spec.js')
+                        .pipe(template(answers))
+                        .pipe(rename(answers.fileName + '-controller.spec.js'))
+                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module));
+                        gulp.src(__dirname + '/../templates/controller/controller.js')
+                        .pipe(template(answers))
+                        .pipe(rename(answers.fileName + '-controller.js'))
+                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                        .on('finish', function() {
+                            done();
+                        });
+
+                } else {
+                    gulp.src(__dirname + '/../templates/controller/controller.js')
+                        .pipe(template(answers))
+                        .pipe(rename(answers.fileName + '-controller.js'))
+                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                        .on('finish', function() {
+                            done();
+                        });
+
+                }
+                // //Source
+                // gulp.src(__dirname + '/../templates/controller/controller.js')
+                //     .pipe(template(answers))
+                //     .pipe(rename(answers.fileName + '-controller.js'))
+                //     .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
+                //     .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                //     .on('finish', function() {
+                //         done();
+                //     });
+            });
         });
-    });
-}
+    }
 })();
