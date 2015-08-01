@@ -10,6 +10,8 @@
   "scripts": {
     "test": "NODE_ENV=test mocha -R spec test/*.spec.js",
     "posttest": "NODE_ENV=test mocha -R travis-cov test/*.spec.js",
+    "modular": "NODE_ENV=test mocha -R spec test/top.js",
+    "travis": "NODE_ENV=test mocha -R travis-cov test/top.js",
     "coveralls": "NODE_ENV=test ./node_modules/.bin/mocha  test/*.spec.js -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "config": {

@@ -14,24 +14,31 @@
 
     var testSuite = [{
         description: 'Test the Application generator',
-        testcase: './app/app.spec'
+        testcase: './cases/app.spec'
     }, {
         description: 'Test the Constants generator',
-        testcase: './constant/constant.spec'
+        testcase: './cases/constant.spec'
     }, {
         description: 'Test controller generator with test',
-        testcase: './controller/controller.test.spec'
+        testcase: './cases/controller.test.spec'
     }];
+
+    require('blanket')({
+        pattern: function(filename) {
+            return !/node_modules/.test(filename);
+        }
+    });
 
     //Load the main slush file for testing
     require('../slushfile');
 
     describe('slush-angular-gulp', function() {
-        before(function() {
-            process.chdir(__dirname);
-        });
+        // before(function() {
+        //     process.chdir(__dirname);
+        // });
 
         function beforeEach() {
+            process.chdir(__dirname);
             testingUtil.mockPrompt({
                 name: 'module',
                 example: ['todo'],
