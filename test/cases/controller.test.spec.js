@@ -6,6 +6,7 @@
     var assert = common.assert;
     var testingUtil = common.testingUtil;
     var util = common.util;
+    var _ = common._;
     var mockGulpDest = common.mockGulpDest;
     var gulp = common.gulp;
 
@@ -13,8 +14,8 @@
         process.chdir(__dirname);
         testingUtil.mockPrompt({
                     module: 'module1',
-                    fileName: 'mycontroller',
-                    test: true
+                    fileName: 'default',
+                    spec: true
                 });
                 util.setRuntimeMode('TEST');
     }
@@ -29,8 +30,12 @@
     it('should put the correct controller filename', function(done) {
         beforeEach();
         gulp.start('controller').once('stop', function() {
-            mockGulpDest.assertDestContains('mycontroller-controller.js');
-            mockGulpDest.assertDestContains('mycontroller-controller.spec.js');
+            var files = [];
+            // _.each(mockGulpDest.files(), function (item) {
+            //   console.log('mockGulpDest', item);
+            // });
+            mockGulpDest.assertDestContains('default-controller.js');
+            mockGulpDest.assertDestContains('default-controller.spec.js');
             done();
         });
     });
