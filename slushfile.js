@@ -1,6 +1,7 @@
-'use strict';
-var gulp = require('gulp');
 (function() {
+    'use strict';
+    var gulp = require('gulp');
+
     var includeAll = require('include-all');
     /**
      * Loads task modules from a relative path.
@@ -27,7 +28,8 @@ var gulp = require('gulp');
      * Tasks are in `tasks/`
      */
     addTasks(loadTasks('tasks/'));
-})();
 
-// require('gulp-load-tasks')(__dirname + '/tasks');
-gulp.task('default', ['app']);
+    // require('gulp-load-tasks')(__dirname + '/tasks');
+    gulp.task('default', ['app']);
+
+})();
