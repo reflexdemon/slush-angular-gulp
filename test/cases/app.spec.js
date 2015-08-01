@@ -99,4 +99,104 @@
         });
     });
 
+    //Deep example
+    describe('Todo example', function() {
+        it('should not add any todo example files by default', function(done) {
+            testingUtil.mockPrompt({
+                name: 'module'
+            });
+            gulp.start('default').once('stop', function() {
+                mockGulpDest.assertDestNotContains({
+                    'src/app/components/todo': [
+                        'todo.js',
+                        'todo.html',
+                        'todo.css',
+                        'todo-route.js',
+                        'todo-controller.spec.js',
+                        'todo-controller.js'
+                    ]
+                });
+                done();
+            });
+        });
+        describe('When Todo example is included', function() {
+            function beforeEachTODO() {
+                testingUtil.mockPrompt({
+                    name: 'module',
+                    example: ['todo']
+                });
+            }
+            it('should add a module specific template', function(done) {
+                beforeEachTODO();
+                gulp.start('default').once('stop', function() {
+                    mockGulpDest.assertDestContains('src/app/components/todo/todo.html');
+                    done();
+                });
+            });
+            it('should add a module definition file for the Todo module', function(done) {
+                beforeEachTODO();
+                gulp.start('default').once('stop', function() {
+                    mockGulpDest.assertDestContains('src/app/components/todo/todo.js');
+                    done();
+                });
+            });
+            it('should add a Todo controller with a corresponding test file', function(done) {
+                beforeEachTODO();
+                gulp.start('default').once('stop', function() {
+                    mockGulpDest.assertDestContains([
+                        'src/app/components/todo/todo-controller.js',
+                        'src/app/components/todo/todo-controller.spec.js'
+                    ]);
+                    done();
+                });
+            });
+        });
+    });
+    describe('CSS files', function() {
+        it('should add less stylesheets by default', function(done) {
+            testingUtil.mockPrompt({
+                name: 'module',
+                example: ['todo']
+            });
+            gulp.start('default').once('stop', function() {
+                mockGulpDest.assertDestContains([
+                    'src/app/app.less',
+                    'src/app/styles/_base.less',
+                    'src/app/components/todo/todo.less'
+                ]);
+                done();
+            });
+        });
+        it('should add LESS stylesheets when LESS is chosen', function(done) {
+            testingUtil.mockPrompt({
+                name: 'module',
+                csstype: 'less',
+                example: ['todo']
+            });
+            gulp.start('default').once('stop', function() {
+                mockGulpDest.assertDestContains([
+                    'src/app/app.less',
+                    'src/app/styles/_base.less',
+                    'src/app/components/todo/todo.less'
+                ]);
+                done();
+            });
+        });
+        it('should add Sass stylesheets when Sass is chosen', function(done) {
+            testingUtil.mockPrompt({
+                name: 'module',
+                csstype: 'sass',
+                example: ['todo']
+            });
+            gulp.start('default').once('stop', function() {
+                mockGulpDest.assertDestContains([
+                    'src/app/app.scss',
+                    'src/app/styles/_base.scss',
+                    'src/app/components/todo/todo.scss'
+                ]);
+                done();
+            });
+        });
+    });
+
 })();

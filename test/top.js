@@ -42,6 +42,21 @@
     }, {
         description: 'Test module with route generator',
         testcase: './cases/module.route.spec'
+    }, {
+        description: 'Test provider generator',
+        testcase: './cases/provider.spec'
+    }, {
+        description: 'Test service generator',
+        testcase: './cases/service.spec'
+    }, {
+        description: 'Test value generator',
+        testcase: './cases/value.spec'
+    }, {
+        description: 'Test view generator',
+        testcase: './cases/view.spec'
+    }, {
+        description: 'Test Negative usecases for generator',
+        testcase: './cases/negative.spec'
     }];
 
     require('blanket')({
@@ -54,21 +69,10 @@
     require('../slushfile');
 
     describe('slush-angular-gulp', function() {
-        // before(function() {
-        //     process.chdir(__dirname);
-        // });
+        before(function() {
+            console.log('Starting...');
+        });
 
-        function beforeEach() {
-            process.chdir(__dirname);
-            testingUtil.mockPrompt({
-                name: 'module',
-                example: ['todo'],
-                module: 'module1',
-                fileName: 'myfilename',
-                test: true
-            });
-            util.setRuntimeMode('TEST');
-        }
         _.each(testSuite, function(tCase) {
             importTest(tCase.description, tCase.testcase);
         });
