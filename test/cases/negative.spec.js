@@ -15,6 +15,7 @@
             fileName: 'strangefilename',
             test: true
         });
+        util.setRuntimeMode('LIVE');
     }
 
     it('test for error constant', function(done) {
