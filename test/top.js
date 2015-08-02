@@ -46,6 +46,9 @@
         description: 'Test provider generator',
         testcase: './cases/provider.spec'
     }, {
+        description: 'Test route generator',
+        testcase: './cases/route.spec'
+    }, {
         description: 'Test service generator',
         testcase: './cases/service.spec'
     }, {
