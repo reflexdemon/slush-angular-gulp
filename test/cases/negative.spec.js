@@ -10,12 +10,12 @@
     var util = common.util;
 
     function beforeEach() {
+        util.setRuntimeMode('LIVE');
         testingUtil.mockPrompt({
             module: 'module1',
             fileName: 'strangefilename',
             test: true
         });
-        util.setRuntimeMode('LIVE');
     }
 
     it('test for error constant', function(done) {
@@ -95,5 +95,11 @@
             gulp.start('view');
         }).is.throwing();
     });
-
+it('test for error constant', function(done) {
+        beforeEach();
+        assert.that(function() {
+            done();
+            gulp.start('constant', ['test']);
+        }).is.throwing();
+    });
 })();
