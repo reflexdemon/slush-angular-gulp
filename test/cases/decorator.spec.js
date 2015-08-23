@@ -21,7 +21,7 @@
     it('should put the decorator file in the correct directory', function(done) {
         beforeEach();
         gulp.start('decorator').once('stop', function() {
-            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/module1');
             done();
         });
     });

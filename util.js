@@ -72,7 +72,7 @@
             return ['module1', 'module2'];
         }
         var modules = [];
-        var componentsDir = appDir + '/components';
+        var componentsDir = appDir;// + '/components';
         var fs = require('fs');
 
         var finalList = [];

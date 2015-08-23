@@ -107,7 +107,7 @@
             });
             gulp.start('default').once('stop', function() {
                 mockGulpDest.assertDestNotContains({
-                    'src/app/components/todo': [
+                    'src/app/todo': [
                         'todo.js',
                         'todo.html',
                         'todo.css',
@@ -129,14 +129,14 @@
             it('should add a module specific template', function(done) {
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
-                    mockGulpDest.assertDestContains('src/app/components/todo/todo.html');
+                    mockGulpDest.assertDestContains('src/app/todo/todo.html');
                     done();
                 });
             });
             it('should add a module definition file for the Todo module', function(done) {
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
-                    mockGulpDest.assertDestContains('src/app/components/todo/todo.js');
+                    mockGulpDest.assertDestContains('src/app/todo/todo.js');
                     done();
                 });
             });
@@ -144,8 +144,8 @@
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
                     mockGulpDest.assertDestContains([
-                        'src/app/components/todo/todo-controller.js',
-                        'src/app/components/todo/todo-controller.spec.js'
+                        'src/app/todo/todo-controller.js',
+                        'src/app/todo/todo-controller.spec.js'
                     ]);
                     done();
                 });
@@ -162,7 +162,7 @@
                 mockGulpDest.assertDestContains([
                     'src/app/app.less',
                     'src/app/styles/_base.less',
-                    'src/app/components/todo/todo.less'
+                    'src/app/todo/todo.less'
                 ]);
                 done();
             });
@@ -177,7 +177,7 @@
                 mockGulpDest.assertDestContains([
                     'src/app/app.less',
                     'src/app/styles/_base.less',
-                    'src/app/components/todo/todo.less'
+                    'src/app/todo/todo.less'
                 ]);
                 done();
             });
@@ -192,7 +192,7 @@
                 mockGulpDest.assertDestContains([
                     'src/app/app.scss',
                     'src/app/styles/_base.scss',
-                    'src/app/components/todo/todo.scss'
+                    'src/app/todo/todo.scss'
                 ]);
                 done();
             });

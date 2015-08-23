@@ -21,7 +21,7 @@
     it('should put the module file in the correct directory', function(done) {
         beforeEach();
         gulp.start('module').once('stop', function() {
-            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/mymodule');
+            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/mymodule');
             done();
         });
     });

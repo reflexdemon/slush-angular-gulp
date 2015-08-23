@@ -53,13 +53,13 @@
                     gulp.src(__dirname + '/../templates/controller/controller.spec.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.spec.js'))
-                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module));
-                        gulp.src(__dirname + '/../templates/controller/controller.js')
+                        .pipe(conflict(options.base + options.appDir + '/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module));
+                    gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.js'))
-                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                        .pipe(conflict(options.base + options.appDir + '/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
                         .on('finish', function() {
                             done();
                         });
@@ -68,8 +68,8 @@
                     gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.js'))
-                        .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                        .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                        .pipe(conflict(options.base + options.appDir + '/' + answers.module))
+                        .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
                         .on('finish', function() {
                             done();
                         });
@@ -79,8 +79,8 @@
                 // gulp.src(__dirname + '/../templates/controller/controller.js')
                 //     .pipe(template(answers))
                 //     .pipe(rename(answers.fileName + '-controller.js'))
-                //     .pipe(conflict(options.base + options.appDir + '/components/' + answers.module))
-                //     .pipe(gulp.dest(options.base + options.appDir + '/components/' + answers.module))
+                //     .pipe(conflict(options.base + options.appDir + '/' + answers.module))
+                //     .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
                 //     .on('finish', function() {
                 //         done();
                 //     });

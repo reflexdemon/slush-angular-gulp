@@ -70,22 +70,9 @@
                     var files = [__dirname + '/../templates/app/**'];
                     var exclude = _.xor(examples, answers.example);
                     _.each(exclude, function(choice) {
-                        files.push('!' + __dirname + '/../templates/app/src/app/components/' + choice + '/**');
-                        files.push('!' + __dirname + '/../templates/app/src/app/components/' + choice);
+                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice + '/**');
+                        files.push('!' + __dirname + '/../templates/app/src/app/' + choice);
                     });
-                    /*
-                    { name: 'my-angular-app',
-                      csstype: 'less',
-                      middleware: true,
-                      example: [ 'todo', 'heat', settings: { todo: 'todo', heat: 'heat' } ],
-                      nameDashed: 'my-angular-app',
-                      modulename: 'myAngularApp',
-                      styleData:
-                       { plugin: 'gulp-less',
-                         pluginVersion: '^1.2.3',
-                         pipeCommand: 'g.less()',
-                         extension: 'less' } }
-                     */
                     answers.exampleSettings = {};
                     _.each(answers.example, function(item) {
                         answers.exampleSettings[item] = item;

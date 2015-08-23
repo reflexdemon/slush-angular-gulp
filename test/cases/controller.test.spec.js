@@ -13,17 +13,17 @@
     function beforeEach() {
         process.chdir(__dirname);
         testingUtil.mockPrompt({
-                    module: 'module1',
-                    fileName: 'mycontroller',
-                    spec: true
-                });
-                util.setRuntimeMode('TEST');
+            module: 'module1',
+            fileName: 'mycontroller',
+            spec: true
+        });
+        util.setRuntimeMode('TEST');
     }
 
     it('should put the controller file in the correct directory', function(done) {
         beforeEach();
         gulp.start('controller').once('stop', function() {
-            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/components/module1');
+            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/module1');
             done();
         });
     });
