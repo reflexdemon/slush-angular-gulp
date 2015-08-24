@@ -79,7 +79,7 @@
         if (fs.existsSync(componentsDir)) {
             modules = fs.readdirSync(componentsDir);
             for (var i = 0; i < modules.length; i++) {
-                stats = fs.statSync(componentsDir + '/' + modules[i]);
+                var stats = fs.statSync(componentsDir + '/' + modules[i]);
                 if (stats.isDirectory()) {
                     finalList.push(modules[i]);
                 }
