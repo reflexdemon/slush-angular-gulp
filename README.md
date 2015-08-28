@@ -1,7 +1,8 @@
 #slush-angular-gulp
----
+===
 
 ##Badges
+---
 
 [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp)
 [![NPM version](https://img.shields.io/npm/v/slush-angular-gulp.svg?style=flat)](https://www.npmjs.com/package/slush-angular-gulp)
@@ -11,6 +12,7 @@
 [![Coverage Status](https://coveralls.io/repos/reflexdemon/slush-angular-gulp/badge.svg?branch=master&service=github)](https://coveralls.io/github/reflexdemon/slush-angular-gulp?branch=master)
 [![devDependency Status](https://david-dm.org/reflexdemon/slush-angular-gulp/dev-status.png)](https://david-dm.org/reflexdemon/slush-angular-gulp#info=devDependencies)
 
+---
 
 
 > A [slush](http://slushjs.github.io) generator for AngularJS using the [Google Angular App Structure Recommendations](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
