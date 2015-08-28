@@ -6,17 +6,15 @@
 
 [![GitHub version](https://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp.png)](http://badge.fury.io/gh/reflexdemon%2Fslush-angular-gulp)
 
-[![NPM version](https://img.shields.io/npm/v/slush-angular-gulp.svg?style=flat)](https://www.npmjs.com/package/slush-angular-gulp)
-
 [![npm version](https://badge.fury.io/js/slush-angular-gulp.png)](http://badge.fury.io/js/slush-angular-gulp)
 
 [![Dependency Status](https://david-dm.org/reflexdemon/slush-angular-gulp.png)](https://david-dm.org/reflexdemon/slush-angular-gulp)
+[![devDependency Status](https://david-dm.org/reflexdemon/slush-angular-gulp/dev-status.png)](https://david-dm.org/reflexdemon/slush-angular-gulp#info=devDependencies)
+
 
 [![Build Status](https://travis-ci.org/reflexdemon/slush-angular-gulp.svg?branch=master)](https://travis-ci.org/reflexdemon/slush-angular-gulp)
 
 [![Coverage Status](https://coveralls.io/repos/reflexdemon/slush-angular-gulp/badge.svg?branch=master&service=github)](https://coveralls.io/github/reflexdemon/slush-angular-gulp?branch=master)
-
-[![devDependency Status](https://david-dm.org/reflexdemon/slush-angular-gulp/dev-status.png)](https://david-dm.org/reflexdemon/slush-angular-gulp#info=devDependencies)
 
 ---
 
