@@ -21,7 +21,7 @@
     it('should put the filter file in the correct directory', function(done) {
         beforeEach();
         gulp.start('filter').once('stop', function() {
-            assert.that(mockGulpDest.basePath()).is.endingWith('src/app/module1');
+            assert.that(mockGulpDest.basePath()).is.endingWith('src' + common.path.sep + 'app' + common.path.sep + 'module1');
             done();
         });
     });

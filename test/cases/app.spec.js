@@ -77,7 +77,7 @@
     it('should add an index.html to the app folder', function(done) {
         beforeEach();
         gulp.start('default').once('stop', function() {
-            mockGulpDest.assertDestContains('src/app/index.html');
+            mockGulpDest.assertDestContains('src' + common.path.sep + 'app' + common.path.sep + 'index.html');
             done();
         });
     });
@@ -87,14 +87,14 @@
         });
         beforeEach();
         gulp.start('default').once('stop', function() {
-            mockGulpDest.assertDestContains('src/app/app.js');
+            mockGulpDest.assertDestContains('src' + common.path.sep + 'app' + common.path.sep + 'app.js');
             done();
         });
     });
     it('should create a gitkeep file in the app assets dir', function(done) {
         beforeEach();
         gulp.start('default').once('stop', function() {
-            mockGulpDest.assertDestContains('src/app/assets/.gitkeep');
+            mockGulpDest.assertDestContains('src' + common.path.sep + 'app' + common.path.sep + 'assets' + common.path.sep + '.gitkeep');
             done();
         });
     });
@@ -107,7 +107,7 @@
             });
             gulp.start('default').once('stop', function() {
                 mockGulpDest.assertDestNotContains({
-                    'src/app/todo': [
+                    'src' + common.path.sep + 'app' + common.path.sep + 'todo': [
                         'todo.js',
                         'todo.html',
                         'todo.css',
@@ -129,14 +129,14 @@
             it('should add a module specific template', function(done) {
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
-                    mockGulpDest.assertDestContains('src/app/todo/todo.html');
+                    mockGulpDest.assertDestContains('src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo.html');
                     done();
                 });
             });
             it('should add a module definition file for the Todo module', function(done) {
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
-                    mockGulpDest.assertDestContains('src/app/todo/todo.js');
+                    mockGulpDest.assertDestContains('src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo.js');
                     done();
                 });
             });
@@ -144,8 +144,8 @@
                 beforeEachTODO();
                 gulp.start('default').once('stop', function() {
                     mockGulpDest.assertDestContains([
-                        'src/app/todo/todo-controller.js',
-                        'src/app/todo/todo-controller.spec.js'
+                        'src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo-controller.js',
+                        'src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo-controller.spec.js'
                     ]);
                     done();
                 });
@@ -160,9 +160,9 @@
             });
             gulp.start('default').once('stop', function() {
                 mockGulpDest.assertDestContains([
-                    'src/app/app.less',
-                    'src/app/styles/_base.less',
-                    'src/app/todo/todo.less'
+                    'src' + common.path.sep + 'app' + common.path.sep + 'app.less',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'styles' + common.path.sep + '_base.less',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo.less'
                 ]);
                 done();
             });
@@ -175,9 +175,9 @@
             });
             gulp.start('default').once('stop', function() {
                 mockGulpDest.assertDestContains([
-                    'src/app/app.less',
-                    'src/app/styles/_base.less',
-                    'src/app/todo/todo.less'
+                    'src' + common.path.sep + 'app' + common.path.sep + 'app.less',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'styles' + common.path.sep + '_base.less',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo.less'
                 ]);
                 done();
             });
@@ -190,9 +190,9 @@
             });
             gulp.start('default').once('stop', function() {
                 mockGulpDest.assertDestContains([
-                    'src/app/app.scss',
-                    'src/app/styles/_base.scss',
-                    'src/app/todo/todo.scss'
+                    'src' + common.path.sep + 'app' + common.path.sep + 'app.scss',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'styles' + common.path.sep + '_base.scss',
+                    'src' + common.path.sep + 'app' + common.path.sep + 'todo' + common.path.sep + 'todo.scss'
                 ]);
                 done();
             });
