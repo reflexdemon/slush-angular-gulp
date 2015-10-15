@@ -46,20 +46,25 @@
                     type: 'confirm',
                     name: 'middleware',
                     message: 'Do you want to use middleware for proxy support?',
-                    default: true
+                    default: false
                 }, {
                     type: 'checkbox',
                     name: 'example',
                     message: 'Please select the examples that needs to be included:',
                     choices: [{
+                            name: 'Empty AngularJS with no boilerplate code and external libraries',
+                            value: 'empty',
+                            checked: true
+                        },
+                        {
                             name: 'A Simple TODO application to demo the AngularJS',
                             value: 'todo',
-                            checked: true
+                            checked: false
                         },
                         new inquirer.Separator("These require server side REST calls and it is highly recommended to use the middleware support:"), {
                             name: 'A Simple example to show how to make server call for non persistance service calls (heat)',
                             value: 'heat',
-                            checked: true
+                            checked: false
                         }
                     ]
                 }],
@@ -67,6 +72,7 @@
                     //Hande for user response
                     answers.nameDashed = _.slugify(answers.name);
                     answers.modulename = _.camelize(answers.nameDashed);
+                    answers.cleanConfig =  answers.example.indexOf('empty') != -1;
                     var files = [__dirname + '/../templates/app/**'];
                     var exclude = _.xor(examples, answers.example);
                     _.each(exclude, function(choice) {

@@ -39,7 +39,10 @@
     "gulp-uglify": "~0.3.0",
     "gulp-htmlmin": "~0.1.2",
     "gulp-ng-html2js": "~0.1.7",
-    "gulp-ng-annotate": "~0.2.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-ng-annotate": "~0.2.0"
+    <% if (!cleanConfig) { %>,
+    "karma": "~0.12.16",
     "gulp-karma": "~0.0.4",
     "karma-chai": "~0.1.0",
     "karma-mocha": "~0.1.3",
@@ -47,9 +50,8 @@
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-script-launcher": "~0.1.0",
     "karma-chrome-launcher": "~0.1.4",
-    "karma-firefox-launcher": "~0.1.3",
-    "gulp-connect": "^2.2.0",
-    "karma": "~0.12.16"<% if (middleware) { %>,
+    "karma-firefox-launcher": "~0.1.3"<% } %>
+     <% if (middleware) { %>,
     "proxy-middleware": "^0.9.0",
     "url": "^0.10.2",
     "lodash": "^3.0.0"<% } %>
