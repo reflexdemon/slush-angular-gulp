@@ -7,23 +7,23 @@
     var cssTypeData = {
         'less': {
             plugin: 'gulp-less',
-            pluginVersion: '^1.2.3',
+            pluginVersion: '^3.0.5',
             pipeCommand: 'g.less()',
             extension: 'less'
         },
         'sass': {
             plugin: 'gulp-sass',
-            pluginVersion: '^0.7.1',
+            pluginVersion: '^2.2.0',
             pipeCommand: 'g.sass()',
             extension: 'scss'
         },
         'styl': {
             plugin: 'gulp-stylus',
-            pluginVersion: '^1.0.2',
+            pluginVersion: '^2.3.1',
             pipeCommand: 'g.stylus({use: [require(\'nib\')()]})',
             extension: 'styl',
             extraDependencies: {
-                'nib': '^1.0.2'
+                'nib': '^1.1.0'
             }
         }
     };

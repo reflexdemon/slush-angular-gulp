@@ -32,7 +32,7 @@
     "<%= name %>": "<%= styleData.extraDependencies[name] %>",<%
       });
     } %>
-    "gulp-minify-css": "~0.3.4",
+    "gulp-clean-css": "~2.0.4",
     "gulp-csslint": "~0.1.4",
     "event-stream": "^3.1.5",
     "streamqueue": "~0.1.1",
