@@ -3,4 +3,4 @@ node_modules
 reports/
 coverage.html
 npm-debug.log
-./idea/
+.idea
