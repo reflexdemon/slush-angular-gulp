@@ -3,7 +3,7 @@
  * This is the main task that is invoked for the processing of the slushfile.js
  */
 
-(function() {
+(function () {
     var gulp = require('gulp'),
         install = require('gulp-install'),
         conflict = require('gulp-conflict'),
@@ -15,10 +15,10 @@
     //Local dependencies
     var util = require('../util');
 
-    module.exports = function(gulp) {
+    module.exports = function (gulp) {
         'use strict';
 
-        gulp.task('controller', function(done) {
+        gulp.task('controller', function (done) {
             var _this = this;
             var name = util.getDefaultOption(_this.args, 0);
             var options = util.getGlobalOptions();
@@ -42,35 +42,41 @@
                 name: 'spec',
                 message: 'Do you want to include unit testing?',
                 default: true
-            }], function(answers) {
+            }], function (answers) {
                 //Init
                 answers.nameDashed = _.slugify(util.getNameProposal());
                 answers.scriptAppName = _.camelize(answers.nameDashed) + '.' + answers.module;
                 answers.classedName = _.capitalize(_.camelize(answers.fileName));
                 // console.log('answers:', answers);
                 // test
+                var counter = 0;
                 if (answers.spec === true) {
                     gulp.src(__dirname + '/../templates/controller/controller.spec.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.spec.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
-                        .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module));
-                    gulp.src(__dirname + '/../templates/controller/controller.js')
+                        .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
+                        .on('finish', finishEvent);
+
+                        gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                         .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                        .on('finish', function() {
-                            done();
-                        });
+                        .on('finish', finishEvent);
 
+                    function finishEvent() {
+                        if (++counter > 1) {
+                            done();
+                        }
+                    }
                 } else {
                     gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                         .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                        .on('finish', function() {
+                        .on('finish', function () {
                             done();
                         });
 

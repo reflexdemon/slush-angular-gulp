@@ -22,14 +22,14 @@
 
     it('should put the controller file in the correct directory', function(done) {
         beforeEach();
-        gulp.start('controller').once('stop', function() {
+        gulp.task('controller', function() {
             assert.that(mockGulpDest.basePath()).is.endingWith('src/app/module1');
             done();
         });
     });
     it('should put the correct controller filename', function(done) {
         beforeEach();
-        gulp.start('controller').once('stop', function() {
+        gulp.task('controller', function() {
             var files = [];
             // _.each(mockGulpDest.files(), function (item) {
             //   console.log('mockGulpDest', item);

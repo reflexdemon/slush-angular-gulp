@@ -3,7 +3,7 @@
  * This is the main task that is invoked for the processing of the slushfile.js
  */
 
-(function() {
+(function () {
     var gulp = require('gulp'),
         install = require('gulp-install'),
         conflict = require('gulp-conflict'),
@@ -15,10 +15,10 @@
     //Local dependencies
     var util = require('../util');
 
-    module.exports = function(gulp) {
+    module.exports = function (gulp) {
         'use strict';
 
-        gulp.task('filter', function(done) {
+        gulp.task('filter', function (done) {
             var _this = this;
             var name = util.getDefaultOption(_this.args, 0);
             var options = util.getGlobalOptions();
@@ -43,7 +43,7 @@
                 name: 'test',
                 message: 'Do you want to include unit testing?',
                 default: true
-            }], function(answers) {
+            }]).then(function (answers) {
                 //Init
                 answers.nameDashed = _.slugify(util.getNameProposal());
                 answers.scriptAppName = _.camelize(answers.nameDashed) + '.' + answers.module;
@@ -65,7 +65,7 @@
                     .pipe(rename(answers.fileName + '-filter.js'))
                     .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                     .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                    .on('finish', function() {
+                    .on('finish', function () {
                         done();
                     });
             });
