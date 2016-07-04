@@ -28,9 +28,15 @@
                 message: 'What is the name of your module?',
                 default: util.getDefaultOption(_this.args, 0)
             }, {
+                type: 'confirm',
+                name: 'configConfirm',
+                message: 'Do you wish to have routes?',
+                default: false
+            }/*,
+                {
                 type: 'checkbox',
                 name: 'config',
-                message: 'Which configuration files would you like to be seperate?',
+                message: 'Which configuration files would you like to be separate?',
                 choices: [{
                     name: 'config',
                     value: 'config'
@@ -38,8 +44,7 @@
                     name: 'routes',
                     value: 'routes'
                 }]
-            }
-                /*,{
+            },{
                  type: 'confirm',
                  name: 'css',
                  message: 'Will this module encapsulate its own styles?',
@@ -50,14 +55,15 @@
                 answers.nameDashed = _.slugify(util.getNameProposal());
                 answers.scriptAppName = _.camelize(answers.nameDashed) + '.' + answers.module;
                 //Generate
-                if (answers.config.indexOf('config') > -1) {
+                if (answers.configConfirm) {
+                    answers.config='config';
                     gulp.src(__dirname + '/../templates/module/config.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.module + '-config.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                         .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                }
-                if (answers.config.indexOf('routes') > -1) {
+                } else {
+                    answers.config='route';
                     gulp.src(__dirname + '/../templates/module/routes.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.module + '-routes.js'))

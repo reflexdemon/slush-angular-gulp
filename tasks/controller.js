@@ -42,34 +42,38 @@
                 name: 'spec',
                 message: 'Do you want to include unit testing?',
                 default: true
-            }], function (answers) {
+            }]).then(function (answers) {
                 //Init
                 answers.nameDashed = _.slugify(util.getNameProposal());
                 answers.scriptAppName = _.camelize(answers.nameDashed) + '.' + answers.module;
                 answers.classedName = _.capitalize(_.camelize(answers.fileName));
-                // console.log('answers:', answers);
+                 //console.log('answers:', answers);
                 // test
-                var counter = 0;
                 if (answers.spec === true) {
+                    var counter = 0;
+
                     gulp.src(__dirname + '/../templates/controller/controller.spec.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.spec.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                         .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                        .on('finish', finishEvent);
+                        .on('finish', function() {
+                            if (++counter > 1) {
+                                done();
+                            }
+                        });
 
-                        gulp.src(__dirname + '/../templates/controller/controller.js')
+                    gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
                         .pipe(rename(answers.fileName + '-controller.js'))
                         .pipe(conflict(options.base + options.appDir + '/' + answers.module))
                         .pipe(gulp.dest(options.base + options.appDir + '/' + answers.module))
-                        .on('finish', finishEvent);
+                        .on('finish', function() {
+                            if (++counter > 1) {
+                                done();
+                            }
+                        });
 
-                    function finishEvent() {
-                        if (++counter > 1) {
-                            done();
-                        }
-                    }
                 } else {
                     gulp.src(__dirname + '/../templates/controller/controller.js')
                         .pipe(template(answers))
