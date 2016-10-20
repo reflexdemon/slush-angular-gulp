@@ -2,6 +2,7 @@
     'use strict';
 
     var inquirer = require('inquirer');
+    var _ = require('lodash');
 
     /**
      * Mock inquirer prompt
