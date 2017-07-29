@@ -1,6 +1,8 @@
 #slush-angular-gulp
 ===
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/reflexdemon/slush-angular-gulp.svg)](https://greenkeeper.io/)
+
 ##Badges
 ---
 
