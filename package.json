@@ -62,7 +62,7 @@
     "assertthat": "^0.10.3",
     "blanket": "^1.1.7",
     "chai": "*",
-    "coveralls": "^2.11.3",
+    "coveralls": "^2.13.2",
     "gulp-coverage": "^0.3.36",
     "gulp-coveralls": "^0.1.4",
     "gulp-mocha": "^4.3.1",
