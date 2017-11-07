@@ -59,7 +59,7 @@
     "inquirer": "^3.2.1"
   },
   "devDependencies": {
-    "assertthat": "^0.10.3",
+    "assertthat": "^0.11.0",
     "blanket": "^1.1.7",
     "chai": "*",
     "coveralls": "^2.11.3",
