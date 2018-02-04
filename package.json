@@ -53,7 +53,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-template": "^4.0.0",
     "include-all": "^4.0.3",
-    "lodash": "^4.7.0",
+    "lodash": "4.17.4",
     "underscore.string": "^3.0.3",
     "yargs": "^9.0.1",
     "inquirer": "^4.0.0"
