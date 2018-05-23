@@ -65,7 +65,7 @@
     "coveralls": "^2.11.3",
     "gulp-coverage": "^0.3.36",
     "gulp-coveralls": "^0.1.4",
-    "gulp-mocha": "^4.3.1",
+    "gulp-mocha": "^6.0.0",
     "gulp-strip-debug": "^1.0.2",
     "gulp-util": "^3.0.6",
     "mocha": "*",
