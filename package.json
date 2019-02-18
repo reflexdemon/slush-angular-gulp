@@ -55,7 +55,7 @@
     "include-all": "^4.0.3",
     "lodash": "^4.7.0",
     "underscore.string": "^3.0.3",
-    "yargs": "^9.0.1",
+    "yargs": "^13.2.1",
     "inquirer": "^4.0.0"
   },
   "devDependencies": {
